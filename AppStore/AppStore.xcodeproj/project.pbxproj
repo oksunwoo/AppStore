@@ -13,6 +13,8 @@
 		5347112C29D5CF560026A40C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5347112B29D5CF560026A40C /* Assets.xcassets */; };
 		5347112F29D5CF560026A40C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5347112D29D5CF560026A40C /* LaunchScreen.storyboard */; };
 		53A2F92C29ED6AE40018560C /* UIViewController+Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A2F92B29ED6AE40018560C /* UIViewController+Preview.swift */; };
+		53A2F93029ED6FD30018560C /* CoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A2F92F29ED6FD30018560C /* CoordinatorProtocol.swift */; };
+		53A2F93229ED7E210018560C /* CoordinatorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A2F93129ED7E210018560C /* CoordinatorType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		5347112E29D5CF560026A40C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5347113029D5CF560026A40C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		53A2F92B29ED6AE40018560C /* UIViewController+Preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Preview.swift"; sourceTree = "<group>"; };
+		53A2F92F29ED6FD30018560C /* CoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorProtocol.swift; sourceTree = "<group>"; };
+		53A2F93129ED7E210018560C /* CoordinatorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +67,8 @@
 				5347112B29D5CF560026A40C /* Assets.xcassets */,
 				5347112D29D5CF560026A40C /* LaunchScreen.storyboard */,
 				5347113029D5CF560026A40C /* Info.plist */,
+				53A2F92F29ED6FD30018560C /* CoordinatorProtocol.swift */,
+				53A2F93129ED7E210018560C /* CoordinatorType.swift */,
 			);
 			path = AppStore;
 			sourceTree = "<group>";
@@ -137,8 +143,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				53A2F93229ED7E210018560C /* CoordinatorType.swift in Sources */,
 				5347112729D5CF550026A40C /* ViewController.swift in Sources */,
 				5347112329D5CF550026A40C /* AppDelegate.swift in Sources */,
+				53A2F93029ED6FD30018560C /* CoordinatorProtocol.swift in Sources */,
 				5347112529D5CF550026A40C /* SceneDelegate.swift in Sources */,
 				53A2F92C29ED6AE40018560C /* UIViewController+Preview.swift in Sources */,
 			);
