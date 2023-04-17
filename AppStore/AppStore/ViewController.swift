@@ -13,7 +13,12 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
-
-
 }
 
+import SwiftUI
+
+struct ViewController_Previews: PreviewProvider {
+    static var previews: some View {
+        ViewController().toPreview()
+    }
+}
