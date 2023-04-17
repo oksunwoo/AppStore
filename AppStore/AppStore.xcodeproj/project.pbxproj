@@ -60,17 +60,81 @@
 		5347112129D5CF550026A40C /* AppStore */ = {
 			isa = PBXGroup;
 			children = (
-				5347112229D5CF550026A40C /* AppDelegate.swift */,
-				5347112429D5CF550026A40C /* SceneDelegate.swift */,
+				53A2F93329ED83530018560C /* App */,
+				53A2F93429ED836F0018560C /* Presentation */,
+				53A2F93529ED838A0018560C /* Model */,
+				53A2F93629ED83920018560C /* Network */,
+				53A2F93729ED839B0018560C /* Protocols */,
+				53A2F93829ED83A40018560C /* Extensions */,
+				53A2F93929ED83AE0018560C /* Utilities */,
+				53A2F93A29ED83F10018560C /* Resources */,
 				5347112629D5CF550026A40C /* ViewController.swift */,
-				53A2F92B29ED6AE40018560C /* UIViewController+Preview.swift */,
-				5347112B29D5CF560026A40C /* Assets.xcassets */,
-				5347112D29D5CF560026A40C /* LaunchScreen.storyboard */,
 				5347113029D5CF560026A40C /* Info.plist */,
-				53A2F92F29ED6FD30018560C /* CoordinatorProtocol.swift */,
-				53A2F93129ED7E210018560C /* CoordinatorType.swift */,
 			);
 			path = AppStore;
+			sourceTree = "<group>";
+		};
+		53A2F93329ED83530018560C /* App */ = {
+			isa = PBXGroup;
+			children = (
+				5347112229D5CF550026A40C /* AppDelegate.swift */,
+				5347112429D5CF550026A40C /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		53A2F93429ED836F0018560C /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		53A2F93529ED838A0018560C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		53A2F93629ED83920018560C /* Network */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		53A2F93729ED839B0018560C /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				53A2F93129ED7E210018560C /* CoordinatorType.swift */,
+				53A2F92F29ED6FD30018560C /* CoordinatorProtocol.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		53A2F93829ED83A40018560C /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				53A2F92B29ED6AE40018560C /* UIViewController+Preview.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		53A2F93929ED83AE0018560C /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		53A2F93A29ED83F10018560C /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				5347112B29D5CF560026A40C /* Assets.xcassets */,
+				5347112D29D5CF560026A40C /* LaunchScreen.storyboard */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
