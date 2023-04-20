@@ -1,5 +1,5 @@
 //
-//  AppCoordinator.swift
+//  SearchCoordinator.swift
 //  AppStore
 //
 //  Created by Sunwoo on 2023/04/20.
@@ -7,10 +7,10 @@
 
 import UIKit
 
-final class AppCoordinator: Coordinator {
-    var childCoordinators = [Coordinator]()
+final class SearchCoordinator: Coordinator {
+    var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController
-    var type: CoordinatorType = .app
+    var type: CoordinatorType = .search
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
@@ -22,8 +22,8 @@ final class AppCoordinator: Coordinator {
     
     private func showSearchPage() {
         let navigationController = navigationController
-        let searchCoordinator = SearchCoordinator(navigationController: navigationController)
-        childCoordinators.append(searchCoordinator)
-        searchCoordinator.start()
+        let searchViewController = SearchViewController()
+        
+        navigationController.pushViewController(searchViewController, animated: true)
     }
 }
