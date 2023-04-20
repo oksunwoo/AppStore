@@ -10,5 +10,4 @@ import Foundation
 enum CoordinatorType {
     case app
     case search, detail
-    case today
 }
