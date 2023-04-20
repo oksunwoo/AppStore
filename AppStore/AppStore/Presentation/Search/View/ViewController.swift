@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  SearchViewController.swift
 //  AppStore
 //
 //  Created by Sunwoo on 2023/03/30.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class SearchViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,6 +19,6 @@ import SwiftUI
 
 struct ViewController_Previews: PreviewProvider {
     static var previews: some View {
-        ViewController().toPreview()
+        SearchViewController().toPreview()
     }
 }

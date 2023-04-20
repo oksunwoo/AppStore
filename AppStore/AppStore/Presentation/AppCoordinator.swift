@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class AppCooridinator: Coordinator {
+final class AppCoordinator: Coordinator {
     var childCoordinators = [Coordinator]()
     var navigationController: UINavigationController
     var type: CoordinatorType = .app
