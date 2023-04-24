@@ -12,6 +12,8 @@
 		5347112729D5CF550026A40C /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5347112629D5CF550026A40C /* SearchViewController.swift */; };
 		5347112C29D5CF560026A40C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5347112B29D5CF560026A40C /* Assets.xcassets */; };
 		5347112F29D5CF560026A40C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5347112D29D5CF560026A40C /* LaunchScreen.storyboard */; };
+		537C2DA029F6A32A00942684 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 537C2D9F29F6A32A00942684 /* SearchViewModel.swift */; };
+		537C2DA229F6C39500942684 /* ViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 537C2DA129F6C39500942684 /* ViewModelProtocol.swift */; };
 		53A2F92C29ED6AE40018560C /* UIViewController+Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A2F92B29ED6AE40018560C /* UIViewController+Preview.swift */; };
 		53A2F93029ED6FD30018560C /* CoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A2F92F29ED6FD30018560C /* CoordinatorProtocol.swift */; };
 		53A2F93229ED7E210018560C /* CoordinatorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A2F93129ED7E210018560C /* CoordinatorType.swift */; };
@@ -27,6 +29,8 @@
 		5347112B29D5CF560026A40C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5347112E29D5CF560026A40C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5347113029D5CF560026A40C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		537C2D9F29F6A32A00942684 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		537C2DA129F6C39500942684 /* ViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelProtocol.swift; sourceTree = "<group>"; };
 		53A2F92B29ED6AE40018560C /* UIViewController+Preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Preview.swift"; sourceTree = "<group>"; };
 		53A2F92F29ED6FD30018560C /* CoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorProtocol.swift; sourceTree = "<group>"; };
 		53A2F93129ED7E210018560C /* CoordinatorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorType.swift; sourceTree = "<group>"; };
@@ -77,6 +81,14 @@
 			path = AppStore;
 			sourceTree = "<group>";
 		};
+		537C2D9E29F6A2FF00942684 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				537C2D9F29F6A32A00942684 /* SearchViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		53A2F93329ED83530018560C /* App */ = {
 			isa = PBXGroup;
 			children = (
@@ -112,6 +124,7 @@
 		53A2F93729ED839B0018560C /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				537C2DA129F6C39500942684 /* ViewModelProtocol.swift */,
 				53A2F93129ED7E210018560C /* CoordinatorType.swift */,
 				53A2F92F29ED6FD30018560C /* CoordinatorProtocol.swift */,
 			);
@@ -146,6 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				53A2F93F29F164560018560C /* SearchCoordinator.swift */,
+				537C2D9E29F6A2FF00942684 /* ViewModel */,
 				53A2F93E29F13AB20018560C /* View */,
 			);
 			path = Search;
@@ -231,11 +245,13 @@
 			files = (
 				53A2F93229ED7E210018560C /* CoordinatorType.swift in Sources */,
 				5347112729D5CF550026A40C /* SearchViewController.swift in Sources */,
+				537C2DA029F6A32A00942684 /* SearchViewModel.swift in Sources */,
 				5347112329D5CF550026A40C /* AppDelegate.swift in Sources */,
 				53A2F93029ED6FD30018560C /* CoordinatorProtocol.swift in Sources */,
 				53A2F94029F164560018560C /* SearchCoordinator.swift in Sources */,
 				5347112529D5CF550026A40C /* SceneDelegate.swift in Sources */,
 				53A2F92C29ED6AE40018560C /* UIViewController+Preview.swift in Sources */,
+				537C2DA229F6C39500942684 /* ViewModelProtocol.swift in Sources */,
 				53A2F93C29F137550018560C /* AppCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
