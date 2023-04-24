@@ -11,7 +11,7 @@ final class SearchViewController: UIViewController {
     private let search: UISearchController = {
         let searchController = UISearchController()
         searchController.searchBar.translatesAutoresizingMaskIntoConstraints = false
-        searchController.searchBar.placeholder = "게임, 앱, 스토리 등"
+        searchController.searchBar.placeholder = Text.placeholder
         searchController.searchBar.setImage(UIImage(named: "icSearchNonW"), for: .search, state: .normal)
         searchController.searchBar.setImage(UIImage(named: "icCancel"), for: .clear, state: .normal)
         searchController.hidesNavigationBarDuringPresentation = true
@@ -37,11 +37,19 @@ final class SearchViewController: UIViewController {
    
     private func configureNavigationBar() {
         self.navigationController?.navigationBar.prefersLargeTitles = true
-        self.navigationController?.navigationBar.topItem?.title = "Search"
+        self.navigationController?.navigationBar.topItem?.title = Text.title
         self.navigationItem.hidesSearchBarWhenScrolling = false
         self.navigationItem.searchController = search
     }
 }
+
+extension SearchViewController {
+    private enum Text {
+        static let placeholder = "게임, 앱, 스토리 등"
+        static let title = "Search"
+    }
+}
+
 
 import SwiftUI
 
