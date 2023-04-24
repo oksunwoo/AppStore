@@ -12,8 +12,8 @@ class SearchViewController: UIViewController {
         let searchbar = UISearchBar()
         searchbar.translatesAutoresizingMaskIntoConstraints = false
         searchbar.placeholder = "게임, 앱, 스토리 등"
-        searchbar.setImage(UIImage(systemName: "magnifyingglass"), for: .search, state: .normal)
-        searchbar.setImage(UIImage(systemName: "x.circle.fill"), for: .clear, state: .normal)
+        searchbar.setImage(UIImage(named: "icSearchNonW"), for: .search, state: .normal)
+        searchbar.setImage(UIImage(named: "icCancel"), for: .clear, state: .normal)
         
         return searchbar
     }()
