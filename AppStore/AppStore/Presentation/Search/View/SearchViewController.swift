@@ -7,23 +7,28 @@
 
 import UIKit
 
-class SearchViewController: UIViewController {
-    private let searchField: UISearchBar = {
-        let searchbar = UISearchBar()
-        searchbar.translatesAutoresizingMaskIntoConstraints = false
-        searchbar.placeholder = "게임, 앱, 스토리 등"
-        searchbar.setImage(UIImage(named: "icSearchNonW"), for: .search, state: .normal)
-        searchbar.setImage(UIImage(named: "icCancel"), for: .clear, state: .normal)
-        
-        return searchbar
+final class SearchViewController: UIViewController {
+    private let search: UISearchController = {
+        let searchController = UISearchController()
+        searchController.searchBar.translatesAutoresizingMaskIntoConstraints = false
+        searchController.searchBar.placeholder = "게임, 앱, 스토리 등"
+        searchController.searchBar.setImage(UIImage(named: "icSearchNonW"), for: .search, state: .normal)
+        searchController.searchBar.setImage(UIImage(named: "icCancel"), for: .clear, state: .normal)
+        searchController.hidesNavigationBarDuringPresentation = true
+        searchController.automaticallyShowsCancelButton = true
+       
+        return searchController
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        configureUI()
+    }
+    
+    private func configureUI() {
         configureBackground()
         configureNavigationBar()
-        configureLayout()
     }
     
     private func configureBackground() {
@@ -33,16 +38,8 @@ class SearchViewController: UIViewController {
     private func configureNavigationBar() {
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationController?.navigationBar.topItem?.title = "Search"
-    }
-    
-    private func configureLayout() {
-        view.addSubview(searchField)
-        
-        NSLayoutConstraint.activate([
-            searchField.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
-            searchField.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 12),
-            searchField.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -12)
-        ])
+        self.navigationItem.hidesSearchBarWhenScrolling = false
+        self.navigationItem.searchController = search
     }
 }
 
