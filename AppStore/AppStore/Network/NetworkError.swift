@@ -8,16 +8,16 @@
 import Foundation
 
 enum NetworkError: LocalizedError {
-    case URLIsNil
-    case invaildURL
+    case invalidURL
+    case parseError
     case UnknownError(message: String)
     
     var errorDescription: String {
         switch self {
-        case .URLIsNil:
-            return "No URL"
-        case .invaildURL:
-            return "Invaild URL Address"
+        case .invalidURL:
+            return "Invalid URL Address"
+        case . parseError:
+            return "Parse Error"
         case .UnknownError(message: let message):
             return "Unknown Error : \(message)"
         }
