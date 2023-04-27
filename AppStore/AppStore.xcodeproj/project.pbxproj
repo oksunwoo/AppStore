@@ -18,6 +18,7 @@
 		537C2DA729F7E39B00942684 /* AppInformationDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 537C2DA629F7E39B00942684 /* AppInformationDTO.swift */; };
 		537C2DA929F9255D00942684 /* APIProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 537C2DA829F9255D00942684 /* APIProtocol.swift */; };
 		537C2DAB29F963D600942684 /* APIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 537C2DAA29F963D600942684 /* APIResponse.swift */; };
+		537C2DAD29FAAB5700942684 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 537C2DAC29FAAB5700942684 /* NetworkError.swift */; };
 		53A2F92C29ED6AE40018560C /* UIViewController+Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A2F92B29ED6AE40018560C /* UIViewController+Preview.swift */; };
 		53A2F93029ED6FD30018560C /* CoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A2F92F29ED6FD30018560C /* CoordinatorProtocol.swift */; };
 		53A2F93229ED7E210018560C /* CoordinatorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A2F93129ED7E210018560C /* CoordinatorType.swift */; };
@@ -39,6 +40,7 @@
 		537C2DA629F7E39B00942684 /* AppInformationDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInformationDTO.swift; sourceTree = "<group>"; };
 		537C2DA829F9255D00942684 /* APIProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIProtocol.swift; sourceTree = "<group>"; };
 		537C2DAA29F963D600942684 /* APIResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIResponse.swift; sourceTree = "<group>"; };
+		537C2DAC29FAAB5700942684 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		53A2F92B29ED6AE40018560C /* UIViewController+Preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Preview.swift"; sourceTree = "<group>"; };
 		53A2F92F29ED6FD30018560C /* CoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorProtocol.swift; sourceTree = "<group>"; };
 		53A2F93129ED7E210018560C /* CoordinatorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorType.swift; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 			children = (
 				537C2DA829F9255D00942684 /* APIProtocol.swift */,
 				537C2DAA29F963D600942684 /* APIResponse.swift */,
+				537C2DAC29FAAB5700942684 /* NetworkError.swift */,
 				537C2DA329F7E30900942684 /* DTO */,
 			);
 			path = Network;
@@ -272,6 +275,7 @@
 				53A2F93029ED6FD30018560C /* CoordinatorProtocol.swift in Sources */,
 				537C2DAB29F963D600942684 /* APIResponse.swift in Sources */,
 				53A2F94029F164560018560C /* SearchCoordinator.swift in Sources */,
+				537C2DAD29FAAB5700942684 /* NetworkError.swift in Sources */,
 				5347112529D5CF550026A40C /* SceneDelegate.swift in Sources */,
 				537C2DA729F7E39B00942684 /* AppInformationDTO.swift in Sources */,
 				53A2F92C29ED6AE40018560C /* UIViewController+Preview.swift in Sources */,

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Combine
 
 protocol APIProtocol {
     associatedtype Response: APIResponse
@@ -46,7 +47,7 @@ extension APIProtocol {
 }
 
 protocol Gettable: APIProtocol {
-    
+    func fetchData() -> AnyPublisher<SearchResultDTO, NetworkError>
 }
 
 extension Gettable {
