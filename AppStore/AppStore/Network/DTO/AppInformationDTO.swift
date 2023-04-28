@@ -8,16 +8,18 @@
 import Foundation
 
 struct AppInformationDTO: Decodable {
-    let isGameCenterEnabled: Bool
-    let advisories: [String]
-    let features: [String]
-    let supportedDevices: [String]
-    let ipadScreenshotUrls: [String]
-    let artworkUrl60, artworkUrl512, artworkUrl100: String
-    let appletvScreenshotUrls: [String]
+    let artworkUrl100: String
     let artistViewURL: String
     let screenshotUrls: [String]
+    let artworkUrl60, artworkUrl512: String
+    let supportedDevices: [String]
+    let advisories: [String]
+    let features: [String]
+    let isGameCenterEnabled: Bool
     let kind: String
+    let ipadScreenshotUrls: [String]
+    let appletvScreenshotUrls: [String]
+    let currentVersionReleaseDate: String
     let artistID: Int
     let artistName: String
     let genres: [String]
@@ -31,7 +33,6 @@ struct AppInformationDTO: Decodable {
     let trackName: String
     let primaryGenreName: String
     let primaryGenreID: Int
-    let currentVersionReleaseDate: Date
     let minimumOSVersion: String
     let currency: String
     let trackViewURL: String
@@ -53,7 +54,8 @@ struct AppInformationDTO: Decodable {
     enum CodingKeys: String, CodingKey {
         case isGameCenterEnabled, advisories, features, supportedDevices, ipadScreenshotUrls, artworkUrl60, artworkUrl512, artworkUrl100, appletvScreenshotUrls
         case artistViewURL = "artistViewUrl"
-        case screenshotUrls, kind
+        case screenshotUrls
+        case kind, currentVersionReleaseDate
         case artistID = "artistId"
         case artistName, genres, price, description, releaseDate, sellerName
         case genreIDS = "genreIds"
@@ -61,7 +63,6 @@ struct AppInformationDTO: Decodable {
         case trackID = "trackId"
         case trackName, primaryGenreName
         case primaryGenreID = "primaryGenreId"
-        case currentVersionReleaseDate
         case minimumOSVersion = "minimumOsVersion"
         case currency
         case trackViewURL = "trackViewUrl"
