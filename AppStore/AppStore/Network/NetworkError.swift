@@ -9,6 +9,7 @@ import Foundation
 
 enum NetworkError: LocalizedError {
     case invalidURL
+    case responseError
     case parseError
     case UnknownError(message: String)
     
@@ -16,6 +17,8 @@ enum NetworkError: LocalizedError {
         switch self {
         case .invalidURL:
             return "Invalid URL Address"
+        case .responseError:
+            return "Invalid response"
         case . parseError:
             return "Parse Error"
         case .UnknownError(message: let message):
