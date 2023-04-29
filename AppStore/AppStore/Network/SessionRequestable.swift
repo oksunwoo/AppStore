@@ -1,5 +1,5 @@
 //
-//  APIProvider.swift
+//  SessionRequestable.swift
 //  AppStore
 //
 //  Created by Sunwoo on 2023/04/27.
@@ -8,11 +8,11 @@
 import Foundation
 import Combine
 
-protocol APIProvider {
+protocol SessionRequestable {
     func request<T: Decodable>(urlRequest: URLRequest) -> AnyPublisher<T, NetworkError>
 }
 
-extension URLSession: APIProvider {
+extension URLSession: SessionRequestable {
     func request<T: Decodable>(urlRequest: URLRequest) -> AnyPublisher<T, NetworkError> {
         return dataTaskPublisher(for: urlRequest)
             .tryMap { data, response in

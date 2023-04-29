@@ -10,8 +10,8 @@ import Combine
 @testable import AppStore
 
 final class MockURLSessionTest: XCTestCase {
-    var mockSession: APIProvider!
-    var mockFailSession: APIProvider!
+    var mockSession: SessionRequestable!
+    var mockFailSession: SessionRequestable!
     
     var cancellable = Set<AnyCancellable>()
 

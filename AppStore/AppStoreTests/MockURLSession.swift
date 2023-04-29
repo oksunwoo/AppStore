@@ -9,7 +9,7 @@ import Foundation
 import Combine
 @testable import AppStore
 
-final class MockURLSession: APIProvider {
+final class MockURLSession: SessionRequestable {
     func request<T: Decodable>(urlRequest: URLRequest) -> AnyPublisher<T, NetworkError> {
         guard let path = Bundle(for: type(of: self)).path(forResource: "mock", ofType: "json"),
                 let jsonString = try? String(contentsOfFile: path),
@@ -24,7 +24,7 @@ final class MockURLSession: APIProvider {
     }
 }
 
-final class MockFailURLSession: APIProvider {
+final class MockFailURLSession: SessionRequestable {
     func request<T: Decodable>(urlRequest: URLRequest) -> AnyPublisher<T, NetworkError> {
         return Fail(error: NetworkError.invalidURL)
             .eraseToAnyPublisher()

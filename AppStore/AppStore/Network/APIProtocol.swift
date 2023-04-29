@@ -9,8 +9,6 @@ import Foundation
 import Combine
 
 protocol APIProtocol {
-    associatedtype Response: APIResponse
-    
     var baseURL: String { get }
     var method: HttpMethod { get }
     var path: String { get }
