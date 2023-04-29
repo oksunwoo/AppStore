@@ -11,7 +11,7 @@ enum NetworkError: LocalizedError {
     case invalidURL
     case responseError
     case parseError
-    case UnknownError(message: String)
+    case UnknownError
     
     var errorDescription: String {
         switch self {
@@ -21,8 +21,8 @@ enum NetworkError: LocalizedError {
             return "Invalid response"
         case . parseError:
             return "Parse Error"
-        case .UnknownError(message: let message):
-            return "Unknown Error : \(message)"
+        case .UnknownError:
+            return "Unknown Error"
         }
     }
 }

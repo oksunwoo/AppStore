@@ -31,7 +31,7 @@ extension URLSession: SessionRequestable {
                     return error
                 }
                 
-                return .UnknownError(message: error.localizedDescription)
+                return .UnknownError
             }
             .eraseToAnyPublisher()
     }

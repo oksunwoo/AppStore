@@ -25,19 +25,30 @@ final class MockURLSessionTest: XCTestCase {
         self.mockFailSession = nil
     }
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+    func test_request() throws {
+        let testAppName = "터틀넥"
+        let publisher = ItunesAPI.SearchAPI(session: mockSession, appName: testAppName).fetchData()
+        
+        publisher.sink { fail in
+            if case .failure(_) = fail {
+                XCTFail()
+            }
+        } receiveValue: { result in
+            XCTAssertEqual("Sunwoo Nam", result.results[0].artistName)
+        }.store(in: &cancellable)
     }
 
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    func test_requestFail() throws {
+        let testAppName = "터틀넥"
+        let publisher = ItunesAPI.SearchAPI(session: mockFailSession, appName: testAppName).fetchData()
+        
+        publisher.sink { fail in
+            if case .failure(let error) = fail {
+                print(error)
+                XCTAssertEqual(error, NetworkError.invalidURL)
+            }
+        } receiveValue: { _ in
+            XCTFail()
+        }.store(in: &cancellable)
     }
-
 }
