@@ -33,14 +33,33 @@ class SearchViewModel: ViewModelPrototol {
                 return keyword.isEmpty == false
             }
             .map { keyword in
-            let resultPublisher = self.fetchData(with: keyword)
-                .map { dto in
-
-                }
-            return true
-        }
-        .replaceError(with: false)
-        .eraseToAnyPublisher()
+                let resultPublisher = self.fetchData(with: keyword)
+                    .map { resultDTO in
+                        let results: [AppInformation] = resultDTO.results.map { appInformationDTO in
+                            let appInformation = AppInformation(
+                                artworkURL100: appInformationDTO.artworkUrl100,
+                                screenshotURLs: appInformationDTO.screenshotUrls,
+                                releaseNotes: appInformationDTO.releaseNotes,
+                                artistName: appInformationDTO.artistName,
+                                primaryGenreName: appInformationDTO.primaryGenreName,
+                                description: appInformationDTO.description,
+                                trackName: appInformationDTO.trackName,
+                                sellerName: appInformationDTO.sellerName,
+                                languageCodesISO2A: appInformationDTO.languageCodesISO2A,
+                                fileSizeBytes: appInformationDTO.fileSizeBytes,
+                                contentAdvisoryRating: appInformationDTO.contentAdvisoryRating,
+                                formattedPrice: appInformationDTO.formattedPrice,
+                                averageUserRating: appInformationDTO.averageUserRating,
+                                userRatingCount: appInformationDTO.userRatingCount,
+                                version: appInformationDTO.version
+                            )
+                            return appInformation
+                        }
+                    }
+                return true
+            }
+            .replaceError(with: false)
+            .eraseToAnyPublisher()
     }
     
     private func fetchData(with keyword: String) -> AnyPublisher<SearchResultDTO, NetworkError> {
