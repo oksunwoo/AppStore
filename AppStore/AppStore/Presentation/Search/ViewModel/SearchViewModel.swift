@@ -24,7 +24,23 @@ class SearchViewModel: ViewModelPrototol {
     }
     
     func transform(input: Input) -> Output {
+        
+    }
     
+    func configureSubject(input publisher: AnyPublisher<String, Never>) -> AnyPublisher<Bool, Never> {
+        publisher
+            .filter{ keyword in
+                return keyword.isEmpty == false
+            }
+            .map { keyword in
+            let resultPublisher = self.fetchData(with: keyword)
+                .map { dto in
+
+                }
+            return true
+        }
+        .replaceError(with: false)
+        .eraseToAnyPublisher()
     }
     
     private func fetchData(with keyword: String) -> AnyPublisher<SearchResultDTO, NetworkError> {
