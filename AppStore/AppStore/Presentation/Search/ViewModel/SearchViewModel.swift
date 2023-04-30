@@ -24,7 +24,8 @@ class SearchViewModel: ViewModelPrototol {
     }
     
     func transform(input: Input) -> Output {
-        
+        let isSuccess = configureSubject(input: input.keyword)
+        return Output(isAPISuccess: isSuccess)
     }
     
     func configureSubject(input publisher: AnyPublisher<String, Never>) -> AnyPublisher<Bool, Never> {
