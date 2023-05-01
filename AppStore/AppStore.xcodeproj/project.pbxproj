@@ -31,6 +31,7 @@
 		53B3D9BC29FD3ABD00C51BDB /* MockURLSessionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53B3D9BB29FD3ABD00C51BDB /* MockURLSessionTest.swift */; };
 		53B3D9BE29FD40EB00C51BDB /* ItunesAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53B3D9BD29FD40EB00C51BDB /* ItunesAPI.swift */; };
 		53B3D9C029FEC05600C51BDB /* AppInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53B3D9BF29FEC05600C51BDB /* AppInformation.swift */; };
+		53B3D9C229FFC1CF00C51BDB /* ItunesSearchAPITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53B3D9C129FFC1CF00C51BDB /* ItunesSearchAPITest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,7 @@
 		53B3D9BB29FD3ABD00C51BDB /* MockURLSessionTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLSessionTest.swift; sourceTree = "<group>"; };
 		53B3D9BD29FD40EB00C51BDB /* ItunesAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItunesAPI.swift; sourceTree = "<group>"; };
 		53B3D9BF29FEC05600C51BDB /* AppInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInformation.swift; sourceTree = "<group>"; };
+		53B3D9C129FFC1CF00C51BDB /* ItunesSearchAPITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItunesSearchAPITest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -240,6 +242,7 @@
 				53B3D9B529FBDFEC00C51BDB /* JSONDecodingTest.swift */,
 				53B3D9B929FD2DE500C51BDB /* MockURLSession.swift */,
 				53B3D9BB29FD3ABD00C51BDB /* MockURLSessionTest.swift */,
+				53B3D9C129FFC1CF00C51BDB /* ItunesSearchAPITest.swift */,
 			);
 			path = AppStoreTests;
 			sourceTree = "<group>";
@@ -370,6 +373,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				53B3D9C229FFC1CF00C51BDB /* ItunesSearchAPITest.swift in Sources */,
 				53B3D9BA29FD2DE500C51BDB /* MockURLSession.swift in Sources */,
 				53B3D9B629FBDFEC00C51BDB /* JSONDecodingTest.swift in Sources */,
 				53B3D9BC29FD3ABD00C51BDB /* MockURLSessionTest.swift in Sources */,
