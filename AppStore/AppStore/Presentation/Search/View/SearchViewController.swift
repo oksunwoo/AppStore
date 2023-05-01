@@ -20,6 +20,14 @@ final class SearchViewController: UIViewController {
         return searchController
     }()
     
+    private let listTableView: UITableView = {
+       let tableView = UITableView()
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.separatorStyle = .none
+        
+        return tableView
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -29,6 +37,11 @@ final class SearchViewController: UIViewController {
     private func configureUI() {
         configureBackground()
         configureNavigationBar()
+        configureTableView()
+    }
+    
+    private func configureTableView() {
+        listTableView.dataSource = self
     }
     
     private func configureBackground() {
@@ -47,6 +60,16 @@ extension SearchViewController {
     private enum Text {
         static let placeholder = "게임, 앱, 스토리 등"
         static let title = "Search"
+    }
+}
+
+extension SearchViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        10
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return UITableViewCell()
     }
 }
 
