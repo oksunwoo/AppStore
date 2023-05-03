@@ -34,6 +34,7 @@
 		53B3D9C229FFC1CF00C51BDB /* ItunesSearchAPITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53B3D9C129FFC1CF00C51BDB /* ItunesSearchAPITest.swift */; };
 		53B3D9C42A00EEDB00C51BDB /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53B3D9C32A00EEDB00C51BDB /* ListTableViewCell.swift */; };
 		53B3D9C82A01013300C51BDB /* StarImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53B3D9C72A01013300C51BDB /* StarImageView.swift */; };
+		53B3D9CA2A010C1000C51BDB /* StarRatingStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53B3D9C92A010C1000C51BDB /* StarRatingStackView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,7 @@
 		53B3D9C129FFC1CF00C51BDB /* ItunesSearchAPITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItunesSearchAPITest.swift; sourceTree = "<group>"; };
 		53B3D9C32A00EEDB00C51BDB /* ListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
 		53B3D9C72A01013300C51BDB /* StarImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarImageView.swift; sourceTree = "<group>"; };
+		53B3D9C92A010C1000C51BDB /* StarRatingStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRatingStackView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -237,6 +239,7 @@
 				5347112629D5CF550026A40C /* SearchViewController.swift */,
 				53B3D9C32A00EEDB00C51BDB /* ListTableViewCell.swift */,
 				53B3D9C72A01013300C51BDB /* StarImageView.swift */,
+				53B3D9C92A010C1000C51BDB /* StarRatingStackView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -367,6 +370,7 @@
 				53A2F93029ED6FD30018560C /* CoordinatorProtocol.swift in Sources */,
 				53B3D9BE29FD40EB00C51BDB /* ItunesAPI.swift in Sources */,
 				537C2DAB29F963D600942684 /* APIResponse.swift in Sources */,
+				53B3D9CA2A010C1000C51BDB /* StarRatingStackView.swift in Sources */,
 				53A2F94029F164560018560C /* SearchCoordinator.swift in Sources */,
 				537C2DAD29FAAB5700942684 /* NetworkError.swift in Sources */,
 				5347112529D5CF550026A40C /* SceneDelegate.swift in Sources */,

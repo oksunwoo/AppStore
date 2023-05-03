@@ -23,7 +23,7 @@ final class SearchViewController: UIViewController {
     private let listTableView: UITableView = {
        let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.separatorStyle = .none
+        tableView.separatorStyle = .singleLine
         
         return tableView
     }()
@@ -38,10 +38,19 @@ final class SearchViewController: UIViewController {
         configureBackground()
         configureNavigationBar()
         configureTableView()
+        listTableView.register(ListTableViewCell.self, forCellReuseIdentifier: "ListTableViewCell")
+        listTableView.dataSource = self
     }
     
     private func configureTableView() {
-        listTableView.dataSource = self
+        listTableView.backgroundColor = .red
+        view.addSubview(listTableView)
+        NSLayoutConstraint.activate([
+            listTableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            listTableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            listTableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            listTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+        ])
     }
     
     private func configureBackground() {
@@ -65,21 +74,13 @@ extension SearchViewController {
 
 extension SearchViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        10
+        return 10
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
-    }
-}
-
-
-import SwiftUI
-
-struct SearchViewController_Previews: PreviewProvider {
-    static var previews: some View {
-        NavigationView {
-            SearchViewController().toPreview()
-        }
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ListTableViewCell", for: indexPath) as! ListTableViewCell
+        cell.configureUI()
+        
+        return cell
     }
 }
