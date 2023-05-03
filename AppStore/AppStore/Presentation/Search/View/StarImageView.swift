@@ -32,6 +32,7 @@ final class StarImageView: UIImageView {
     
     private func configureStar() {
         translatesAutoresizingMaskIntoConstraints = false
+        heightAnchor.constraint(equalTo: widthAnchor).isActive = true
         tintColor = .systemGray
     }
 }

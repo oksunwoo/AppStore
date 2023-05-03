@@ -32,7 +32,8 @@ final class ListTableViewCell: UITableViewCell {
         
         return label
     }()
-   
+    private var starRatingStackView = StarRatingStackView()
+    
     convenience init() {
         self.init(style: .default, reuseIdentifier: Text.reuseIdentifier)
         configureUI()
@@ -48,7 +49,7 @@ final class ListTableViewCell: UITableViewCell {
         addSubview(iconImageView)
         addSubview(labelStackView)
         labelStackView.addArrangedSubview(titleLabel)
-       // labelStackView.addArrangedSubview(starRatingStackView)
+        labelStackView.addArrangedSubview(starRatingStackView)
         NSLayoutConstraint.activate([
             iconImageView.centerYAnchor.constraint(equalTo: centerYAnchor),
             iconImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
@@ -62,6 +63,7 @@ final class ListTableViewCell: UITableViewCell {
        
         iconImageView.image = UIImage(systemName: "circle")
         titleLabel.text = "카카오톡"
+        starRatingStackView.makeStar(with: 4.5)
     }
 }
 
