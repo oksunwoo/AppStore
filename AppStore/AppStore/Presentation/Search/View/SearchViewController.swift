@@ -40,6 +40,7 @@ final class SearchViewController: UIViewController {
         configureTableView()
         listTableView.register(ListTableViewCell.self, forCellReuseIdentifier: "ListTableViewCell")
         listTableView.dataSource = self
+        listTableView.delegate = self
     }
     
     private func configureTableView() {
@@ -74,13 +75,22 @@ extension SearchViewController {
 
 extension SearchViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ListTableViewCell", for: indexPath) as! ListTableViewCell
-        cell.configureUI()
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ListTableViewCell", for: indexPath) as? ListTableViewCell else {
+            return UITableViewCell()
+        }
         
+        cell.configureUI()
         return cell
+    }
+}
+
+extension SearchViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        return CGFloat(100)
     }
 }

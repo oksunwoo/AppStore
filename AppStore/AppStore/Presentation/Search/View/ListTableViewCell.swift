@@ -20,7 +20,7 @@ final class ListTableViewCell: UITableViewCell {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
-        stackView.spacing = 7
+        stackView.distribution = .fillEqually
 
         return stackView
     }()
@@ -29,9 +29,11 @@ final class ListTableViewCell: UITableViewCell {
        let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 1
+        label.font = .preferredFont(forTextStyle: .title3)
         
         return label
     }()
+    
     private var starRatingStackView = StarRatingStackView()
     
     convenience init() {
@@ -47,21 +49,24 @@ final class ListTableViewCell: UITableViewCell {
     
     func configureUI() {
         addSubview(iconImageView)
-        addSubview(labelStackView)
-        labelStackView.addArrangedSubview(titleLabel)
-        labelStackView.addArrangedSubview(starRatingStackView)
+//        addSubview(labelStackView)
+//        labelStackView.addArrangedSubview(titleLabel)
+        //labelStackView.addArrangedSubview(starRatingStackView)
         NSLayoutConstraint.activate([
             iconImageView.centerYAnchor.constraint(equalTo: centerYAnchor),
             iconImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            iconImageView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.2),
+//            iconImageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -1),
+//            iconImageView.topAnchor.constraint(equalTo: topAnchor, constant: 1),
             iconImageView.heightAnchor.constraint(equalTo: iconImageView.widthAnchor),
 
-            labelStackView.topAnchor.constraint(equalTo: iconImageView.topAnchor),
-            labelStackView.bottomAnchor.constraint(equalTo: iconImageView.bottomAnchor),
-            labelStackView.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: 10),
-            labelStackView.trailingAnchor.constraint(equalTo: trailingAnchor)
+//            labelStackView.topAnchor.constraint(equalTo: topAnchor),
+//            labelStackView.bottomAnchor.constraint(equalTo: bottomAnchor),
+//            labelStackView.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: 10),
+//            labelStackView.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
        
-        iconImageView.image = UIImage(systemName: "circle")
+        iconImageView.image = UIImage(systemName: "square")
         titleLabel.text = "카카오톡"
         starRatingStackView.makeStar(with: 4.5)
     }
