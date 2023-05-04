@@ -41,11 +41,12 @@ final class SearchViewController: UIViewController {
         listTableView.register(ListTableViewCell.self, forCellReuseIdentifier: "ListTableViewCell")
         listTableView.dataSource = self
         listTableView.delegate = self
+        search.searchBar.delegate = self
     }
     
     private func configureTableView() {
-        listTableView.backgroundColor = .red
         view.addSubview(listTableView)
+        
         NSLayoutConstraint.activate([
             listTableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             listTableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
@@ -70,6 +71,16 @@ extension SearchViewController {
     private enum Text {
         static let placeholder = "게임, 앱, 스토리 등"
         static let title = "Search"
+    }
+}
+
+extension SearchViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard let searchKeyword = searchBar.text else {
+            return
+        }
+        
+        print(searchKeyword)
     }
 }
 
