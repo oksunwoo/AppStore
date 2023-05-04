@@ -38,13 +38,25 @@ final class SearchViewController: UIViewController {
         configureBackground()
         configureNavigationBar()
         configureTableView()
-        listTableView.register(ListTableViewCell.self, forCellReuseIdentifier: "ListTableViewCell")
-        listTableView.dataSource = self
-        listTableView.delegate = self
+    }
+    
+    private func configureBackground() {
+        view.backgroundColor = .systemBackground
+    }
+    
+    private func configureNavigationBar() {
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+        self.navigationController?.navigationBar.topItem?.title = Text.title
+        self.navigationItem.hidesSearchBarWhenScrolling = false
+        self.navigationItem.searchController = search
         search.searchBar.delegate = self
     }
     
     private func configureTableView() {
+        listTableView.dataSource = self
+        listTableView.delegate = self
+        registerCell()
+        
         view.addSubview(listTableView)
         
         NSLayoutConstraint.activate([
@@ -55,22 +67,8 @@ final class SearchViewController: UIViewController {
         ])
     }
     
-    private func configureBackground() {
-        view.backgroundColor = .systemBackground
-    }
-   
-    private func configureNavigationBar() {
-        self.navigationController?.navigationBar.prefersLargeTitles = true
-        self.navigationController?.navigationBar.topItem?.title = Text.title
-        self.navigationItem.hidesSearchBarWhenScrolling = false
-        self.navigationItem.searchController = search
-    }
-}
-
-extension SearchViewController {
-    private enum Text {
-        static let placeholder = "게임, 앱, 스토리 등"
-        static let title = "Search"
+    private func registerCell() {
+        listTableView.register(ListTableViewCell.self, forCellReuseIdentifier: Text.cellIdentifier)
     }
 }
 
@@ -90,7 +88,7 @@ extension SearchViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ListTableViewCell", for: indexPath) as? ListTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: Text.cellIdentifier, for: indexPath) as? ListTableViewCell else {
             return UITableViewCell()
         }
         
@@ -103,5 +101,13 @@ extension SearchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         return CGFloat(100)
+    }
+}
+
+extension SearchViewController {
+    private enum Text {
+        static let placeholder = "게임, 앱, 스토리 등"
+        static let title = "Search"
+        static let cellIdentifier = "ListTableViewCell"
     }
 }
