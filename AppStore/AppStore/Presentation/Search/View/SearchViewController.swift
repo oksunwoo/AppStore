@@ -29,13 +29,14 @@ final class SearchViewController: UIViewController {
         return tableView
     }()
     
-    private var viewModel: SearchViewModel!
+    private var viewModel = SearchViewModel()
     private let inputKeyword = PassthroughSubject<String, Never>()
+    var cancel = Set<AnyCancellable>()
     
-    convenience init(viewModel: SearchViewModel) {
-        self.init()
-        self.viewModel = viewModel
-    }
+//    convenience init(viewModel: SearchViewModel) {
+//        self.init()
+//        self.viewModel = viewModel
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -86,11 +87,15 @@ extension SearchViewController {
     func bind() {
         
         let input = SearchViewModel.Input(searchButtonDidTap: inputKeyword.eraseToAnyPublisher())
-        guard let output = viewModel?.transform(input: input) else {
-            return
-        }
-        inputKeyword.send("카카오")
-        print(output.isAPISuccess)
+        let output = viewModel.transform(input: input)
+        
+        output.isAPISuccess.sink { isAPISuccess in
+            if isAPISuccess {
+                print("success")
+            } else {
+                print("fail")
+            }
+        }.store(in: &cancel)
     }
 }
 

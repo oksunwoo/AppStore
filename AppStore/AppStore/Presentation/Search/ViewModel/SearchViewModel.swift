@@ -17,11 +17,11 @@ class SearchViewModel: ViewModelPrototol {
         let isAPISuccess: AnyPublisher<Bool, Never>
     }
     
-    private weak var coordinator: SearchCoordinator!
-    
-    init(coordinator: SearchCoordinator) {
-        self.coordinator = coordinator
-    }
+    //    private weak var coordinator: SearchCoordinator!
+    //
+    //    init(coordinator: SearchCoordinator) {
+    //        self.coordinator = coordinator
+    //    }
     
     func transform(input: Input) -> Output {
         let isSuccess = configureSubject(input: input.searchButtonDidTap)
