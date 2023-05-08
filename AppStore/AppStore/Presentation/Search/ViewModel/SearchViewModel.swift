@@ -10,21 +10,21 @@ import Combine
 
 class SearchViewModel: ViewModelPrototol {
     struct Input {
-        let keyword: AnyPublisher<String, Never>
+        let searchButtonDidTap: AnyPublisher<String, Never>
     }
     
     struct Output {
         let isAPISuccess: AnyPublisher<Bool, Never>
     }
     
-    private let coordinator: SearchCoordinator
+    private weak var coordinator: SearchCoordinator!
     
     init(coordinator: SearchCoordinator) {
         self.coordinator = coordinator
     }
     
     func transform(input: Input) -> Output {
-        let isSuccess = configureSubject(input: input.keyword)
+        let isSuccess = configureSubject(input: input.searchButtonDidTap)
         return Output(isAPISuccess: isSuccess)
     }
     
@@ -66,5 +66,4 @@ class SearchViewModel: ViewModelPrototol {
     private func fetchData(with keyword: String) -> AnyPublisher<SearchResultDTO, NetworkError> {
         return ItunesAPI.SearchAPI(appName: keyword).fetchData()
     }
-    
 }

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Combine
 
 final class SearchViewController: UIViewController {
     private let search: UISearchController = {
@@ -28,10 +29,19 @@ final class SearchViewController: UIViewController {
         return tableView
     }()
     
+    private var viewModel: SearchViewModel!
+    private let inputKeyword = PassthroughSubject<String, Never>()
+    
+    convenience init(viewModel: SearchViewModel) {
+        self.init()
+        self.viewModel = viewModel
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configureUI()
+        bind()
     }
     
     private func configureUI() {
@@ -72,12 +82,25 @@ final class SearchViewController: UIViewController {
     }
 }
 
+extension SearchViewController {
+    func bind() {
+        
+        let input = SearchViewModel.Input(searchButtonDidTap: inputKeyword.eraseToAnyPublisher())
+        guard let output = viewModel?.transform(input: input) else {
+            return
+        }
+        inputKeyword.send("카카오")
+        print(output.isAPISuccess)
+    }
+}
+
 extension SearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let searchKeyword = searchBar.text else {
             return
         }
         
+        inputKeyword.send(searchKeyword)
         print(searchKeyword)
     }
 }
