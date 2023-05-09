@@ -29,14 +29,14 @@ final class SearchViewController: UIViewController {
         return tableView
     }()
     
-    private var viewModel = SearchViewModel()
+    private var viewModel : SearchViewModel!
     private let inputKeyword = PassthroughSubject<String, Never>()
-    var cancel = Set<AnyCancellable>()
+    private var cancellable = Set<AnyCancellable>()
     
-//    convenience init(viewModel: SearchViewModel) {
-//        self.init()
-//        self.viewModel = viewModel
-//    }
+    convenience init(viewModel: SearchViewModel) {
+        self.init()
+        self.viewModel = viewModel
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -85,7 +85,6 @@ final class SearchViewController: UIViewController {
 
 extension SearchViewController {
     func bind() {
-        
         let input = SearchViewModel.Input(searchButtonDidTap: inputKeyword.eraseToAnyPublisher())
         let output = viewModel.transform(input: input)
         
@@ -95,7 +94,7 @@ extension SearchViewController {
             } else {
                 print("fail")
             }
-        }.store(in: &cancel)
+        }.store(in: &cancellable)
     }
 }
 

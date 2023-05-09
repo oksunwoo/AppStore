@@ -17,18 +17,18 @@ class SearchViewModel: ViewModelPrototol {
         let isAPISuccess: AnyPublisher<Bool, Never>
     }
     
-    //    private weak var coordinator: SearchCoordinator!
-    //
-    //    init(coordinator: SearchCoordinator) {
-    //        self.coordinator = coordinator
-    //    }
+    private weak var coordinator: SearchCoordinator!
+    
+    init(coordinator: SearchCoordinator) {
+        self.coordinator = coordinator
+    }
     
     func transform(input: Input) -> Output {
         let isSuccess = configureOperator(input: input.searchButtonDidTap)
         return Output(isAPISuccess: isSuccess)
     }
     
-    func configureOperator(input publisher: AnyPublisher<String, Never>) -> AnyPublisher<Bool, Never> {
+    private func configureOperator(input publisher: AnyPublisher<String, Never>) -> AnyPublisher<Bool, Never> {
         return publisher
             .flatMap { keyword -> AnyPublisher<Bool, Never> in
                 return self.fetchData(with: keyword).map { searchResultDTO -> Bool in
