@@ -30,6 +30,7 @@ final class SearchViewController: UIViewController {
     }()
     
     private var viewModel : SearchViewModel!
+    private var appsInformation: [AppInformation] = []
     private let inputKeyword = PassthroughSubject<String, Never>()
     private var cancellable = Set<AnyCancellable>()
     
@@ -84,17 +85,19 @@ final class SearchViewController: UIViewController {
 }
 
 extension SearchViewController {
-    func bind() {
+    private func bind() {
         let input = SearchViewModel.Input(searchButtonDidTap: inputKeyword.eraseToAnyPublisher())
         let output = viewModel.transform(input: input)
         
-        output.isAPISuccess.sink { isAPISuccess in
-            if isAPISuccess {
-                print("success")
-            } else {
-                print("fail")
+        output.fetchData.sink { appInformations in
+            guard let informations = appInformations else {
+                return
             }
-        }.store(in: &cancellable)
+            
+            self.appsInformation = informations
+            print(self.appsInformation)
+        }
+        .store(in: &cancellable)
     }
 }
 
@@ -111,7 +114,7 @@ extension SearchViewController: UISearchBarDelegate {
 
 extension SearchViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return appsInformation.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

@@ -14,7 +14,7 @@ class SearchViewModel: ViewModelPrototol {
     }
     
     struct Output {
-        let isAPISuccess: AnyPublisher<Bool, Never>
+        let fetchData: AnyPublisher<[AppInformation]?, Never>
     }
     
     private weak var coordinator: SearchCoordinator!
@@ -24,43 +24,44 @@ class SearchViewModel: ViewModelPrototol {
     }
     
     func transform(input: Input) -> Output {
-        let isSuccess = configureOperator(input: input.searchButtonDidTap)
-        return Output(isAPISuccess: isSuccess)
+        let appsInformation = configureOperator(input: input.searchButtonDidTap)
+        return Output(fetchData: appsInformation)
     }
     
-    private func configureOperator(input publisher: AnyPublisher<String, Never>) -> AnyPublisher<Bool, Never> {
+    private func configureOperator(input publisher: AnyPublisher<String, Never>) -> AnyPublisher<[AppInformation]?, Never> {
         return publisher
-            .flatMap { keyword -> AnyPublisher<Bool, Never> in
-                return self.fetchData(with: keyword).map { searchResultDTO -> Bool in
-                    if searchResultDTO.resultCount == 0 {
-                        return false
+            .flatMap { keyword -> AnyPublisher<[AppInformation]?, Never> in
+                return self.fetchData(with: keyword)
+                    .map { searchResultDTO -> [AppInformation]? in
+                        if searchResultDTO.resultCount == 0 {
+                            return nil
+                        }
+                        
+                        let appsInformation = searchResultDTO.results.map { appInformationDTO in
+                            return AppInformation(
+                                artworkURL100: appInformationDTO.artworkUrl100,
+                                screenshotURLs: appInformationDTO.screenshotUrls,
+                                releaseNotes: appInformationDTO.releaseNotes,
+                                artistName: appInformationDTO.artistName,
+                                primaryGenreName: appInformationDTO.primaryGenreName,
+                                description: appInformationDTO.description,
+                                trackName: appInformationDTO.trackName,
+                                sellerName: appInformationDTO.sellerName,
+                                languageCodesISO2A: appInformationDTO.languageCodesISO2A,
+                                fileSizeBytes: appInformationDTO.fileSizeBytes,
+                                contentAdvisoryRating: appInformationDTO.contentAdvisoryRating,
+                                formattedPrice: appInformationDTO.formattedPrice,
+                                averageUserRating: appInformationDTO.averageUserRating,
+                                userRatingCount: appInformationDTO.userRatingCount,
+                                version: appInformationDTO.version
+                            )
+                        }
+                        return appsInformation
                     }
-                    
-                    let informationOfApps = searchResultDTO.results.map { appInformationDTO in
-                        return AppInformation(
-                            artworkURL100: appInformationDTO.artworkUrl100,
-                            screenshotURLs: appInformationDTO.screenshotUrls,
-                            releaseNotes: appInformationDTO.releaseNotes,
-                            artistName: appInformationDTO.artistName,
-                            primaryGenreName: appInformationDTO.primaryGenreName,
-                            description: appInformationDTO.description,
-                            trackName: appInformationDTO.trackName,
-                            sellerName: appInformationDTO.sellerName,
-                            languageCodesISO2A: appInformationDTO.languageCodesISO2A,
-                            fileSizeBytes: appInformationDTO.fileSizeBytes,
-                            contentAdvisoryRating: appInformationDTO.contentAdvisoryRating,
-                            formattedPrice: appInformationDTO.formattedPrice,
-                            averageUserRating: appInformationDTO.averageUserRating,
-                            userRatingCount: appInformationDTO.userRatingCount,
-                            version: appInformationDTO.version
-                        )
-                    }
-                    print(informationOfApps)
-                    return true
-                }
-                .replaceError(with: false)
-                .eraseToAnyPublisher()
-            }.eraseToAnyPublisher()
+                    .replaceError(with: nil)
+                    .eraseToAnyPublisher()
+            }
+            .eraseToAnyPublisher()
     }
     
     private func fetchData(with keyword: String) -> AnyPublisher<SearchResultDTO, NetworkError> {
