@@ -14,7 +14,7 @@ class SearchViewModel: ViewModelPrototol {
     }
     
     struct Output {
-        let fetchData: AnyPublisher<[AppInformation]?, Never>
+        let appsItem: AnyPublisher<[AppInformation]?, Never>
     }
     
     private weak var coordinator: SearchCoordinator!
@@ -25,7 +25,7 @@ class SearchViewModel: ViewModelPrototol {
     
     func transform(input: Input) -> Output {
         let appsInformation = configureOperator(input: input.searchButtonDidTap)
-        return Output(fetchData: appsInformation)
+        return Output(appsItem: appsInformation)
     }
     
     private func configureOperator(input publisher: AnyPublisher<String, Never>) -> AnyPublisher<[AppInformation]?, Never> {

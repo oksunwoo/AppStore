@@ -89,15 +89,19 @@ extension SearchViewController {
         let input = SearchViewModel.Input(searchButtonDidTap: inputKeyword.eraseToAnyPublisher())
         let output = viewModel.transform(input: input)
         
-        output.fetchData.sink { appInformations in
-            guard let informations = appInformations else {
-                return
+        configureUIContents(with: output.appsItem)
+    }
+    
+    private func configureUIContents(with outputPublisher: AnyPublisher<[AppInformation]?, Never>) {
+        outputPublisher
+            .receive(on: DispatchQueue.main)
+            .sink { appItem in
+                guard let informations = appItem else {
+                    return
+                }
+                self.appsInformation = informations
             }
-            
-            self.appsInformation = informations
-            print(self.appsInformation)
-        }
-        .store(in: &cancellable)
+            .store(in: &cancellable)
     }
 }
 
