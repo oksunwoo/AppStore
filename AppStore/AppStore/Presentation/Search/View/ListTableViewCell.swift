@@ -66,11 +66,22 @@ final class ListTableViewCell: UITableViewCell {
         return label
     }()
     
-    private var starRatingStackView = StarRatingStackView()
+    private var starRatingStackView: StarRatingStackView?
     
     convenience init() {
         self.init(style: .default, reuseIdentifier: Text.reuseIdentifier)
         configureUI()
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        titleLabel.text = nil
+        genreLabel.text = nil
+        ratingCountLabel.text = nil
+        starRatingStackView?.removeFromSuperview()
+        starRatingStackView = nil
+        iconImageView.image = nil
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -85,6 +96,12 @@ final class ListTableViewCell: UITableViewCell {
     }
     
     private func configureUI() {
+        starRatingStackView = StarRatingStackView()
+        
+        guard let starRatingStackView = starRatingStackView else {
+            return
+        }
+        
         addSubview(iconImageView)
         addSubview(labelStackView)
         labelStackView.addArrangedSubview(titleLabel)
@@ -108,15 +125,14 @@ final class ListTableViewCell: UITableViewCell {
             starRatingStackView.widthAnchor.constraint(equalTo: ratingStackView.widthAnchor, multiplier: 0.3),
         ])
     }
-    
+   
     private func setInformation(with appItem: AppInformation) {
         titleLabel.text = appItem.trackName
         genreLabel.text = appItem.primaryGenreName
-        starRatingStackView.makeStar(with: appItem.averageUserRating)
+        starRatingStackView?.makeStar(with: appItem.averageUserRating)
         ratingCountLabel.text = String(appItem.userRatingCount)
         iconImageView.load(urlString: appItem.artworkURL100)
     }
-    
 }
 
 extension ListTableViewCell {
