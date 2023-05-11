@@ -100,6 +100,7 @@ extension SearchViewController {
                     return
                 }
                 self.appsInformation = informations
+                self.listTableView.reloadData()
             }
             .store(in: &cancellable)
     }
@@ -112,7 +113,6 @@ extension SearchViewController: UISearchBarDelegate {
         }
         
         inputKeyword.send(searchKeyword)
-        print(searchKeyword)
     }
 }
 
@@ -126,7 +126,7 @@ extension SearchViewController: UITableViewDataSource {
             return UITableViewCell()
         }
         
-        cell.configureUI()
+        cell.apply(with: appsInformation[indexPath.row])
         return cell
     }
 }

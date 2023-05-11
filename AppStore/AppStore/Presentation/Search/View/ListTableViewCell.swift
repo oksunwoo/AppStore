@@ -15,7 +15,8 @@ final class ListTableViewCell: UITableViewCell {
         imageView.layer.cornerRadius = CGFloat(15)
         imageView.layer.borderWidth = CGFloat(0.1)
         imageView.layer.borderColor = UIColor.systemGray.cgColor
-        imageView.backgroundColor = .yellow
+        imageView.clipsToBounds = true
+        
         return imageView
     }()
 
@@ -25,7 +26,7 @@ final class ListTableViewCell: UITableViewCell {
         stackView.axis = .vertical
         stackView.distribution = .fill
         stackView.spacing = 0
-//        stackView.backgroundColor = .yellow
+
         return stackView
     }()
 
@@ -33,8 +34,8 @@ final class ListTableViewCell: UITableViewCell {
        let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 1
-        label.font = .preferredFont(forTextStyle: .title3)
-//        label.backgroundColor = .green
+        label.font = .preferredFont(forTextStyle: .callout)
+
         return label
     }()
     
@@ -43,7 +44,7 @@ final class ListTableViewCell: UITableViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .preferredFont(forTextStyle: .subheadline)
         label.textColor = .systemGray
-//        label.backgroundColor = .blue
+        
         return label
     }()
     
@@ -52,7 +53,7 @@ final class ListTableViewCell: UITableViewCell {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .horizontal
         stackView.spacing = 5
-//        stackView.backgroundColor = .brown
+
         return stackView
     }()
     
@@ -61,7 +62,7 @@ final class ListTableViewCell: UITableViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .preferredFont(forTextStyle: .caption1)
         label.textColor = .systemGray3
-//        label.backgroundColor = .cyan
+
         return label
     }()
     
@@ -78,7 +79,12 @@ final class ListTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func configureUI() {
+    func apply(with appItem: AppInformation) {
+        configureUI()
+        setInformation(with: appItem)
+    }
+    
+    private func configureUI() {
         addSubview(iconImageView)
         addSubview(labelStackView)
         labelStackView.addArrangedSubview(titleLabel)
@@ -101,13 +107,16 @@ final class ListTableViewCell: UITableViewCell {
             genreLabel.heightAnchor.constraint(equalTo: titleLabel.heightAnchor),
             starRatingStackView.widthAnchor.constraint(equalTo: ratingStackView.widthAnchor, multiplier: 0.3),
         ])
-       
-        iconImageView.image = UIImage(systemName: "circle")
-        titleLabel.text = "카카오톡"
-        genreLabel.text = "Social Network"
-        starRatingStackView.makeStar(with: 4.5)
-        ratingCountLabel.text = "12만"
     }
+    
+    private func setInformation(with appItem: AppInformation) {
+        titleLabel.text = appItem.trackName
+        genreLabel.text = appItem.primaryGenreName
+        starRatingStackView.makeStar(with: appItem.averageUserRating)
+        ratingCountLabel.text = String(appItem.userRatingCount)
+        iconImageView.load(urlString: appItem.artworkURL100)
+    }
+    
 }
 
 extension ListTableViewCell {

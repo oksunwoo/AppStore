@@ -35,6 +35,7 @@
 		53B3D9C42A00EEDB00C51BDB /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53B3D9C32A00EEDB00C51BDB /* ListTableViewCell.swift */; };
 		53B3D9C82A01013300C51BDB /* StarImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53B3D9C72A01013300C51BDB /* StarImageView.swift */; };
 		53B3D9CA2A010C1000C51BDB /* StarRatingStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53B3D9C92A010C1000C51BDB /* StarRatingStackView.swift */; };
+		53B81D622A0D0D1400C9F56D /* UIImage+loadImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53B81D612A0D0D1400C9F56D /* UIImage+loadImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +80,7 @@
 		53B3D9C32A00EEDB00C51BDB /* ListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
 		53B3D9C72A01013300C51BDB /* StarImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarImageView.swift; sourceTree = "<group>"; };
 		53B3D9C92A010C1000C51BDB /* StarRatingStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRatingStackView.swift; sourceTree = "<group>"; };
+		53B81D612A0D0D1400C9F56D /* UIImage+loadImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+loadImage.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -203,6 +205,7 @@
 			isa = PBXGroup;
 			children = (
 				53A2F92B29ED6AE40018560C /* UIViewController+Preview.swift */,
+				53B81D612A0D0D1400C9F56D /* UIImage+loadImage.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -364,6 +367,7 @@
 				53B3D9C029FEC05600C51BDB /* AppInformation.swift in Sources */,
 				537C2DA929F9255D00942684 /* APIProtocol.swift in Sources */,
 				53B3D9C82A01013300C51BDB /* StarImageView.swift in Sources */,
+				53B81D622A0D0D1400C9F56D /* UIImage+loadImage.swift in Sources */,
 				537C2DA529F7E32B00942684 /* SearchResultDTO.swift in Sources */,
 				5347112329D5CF550026A40C /* AppDelegate.swift in Sources */,
 				53B3D9C42A00EEDB00C51BDB /* ListTableViewCell.swift in Sources */,
