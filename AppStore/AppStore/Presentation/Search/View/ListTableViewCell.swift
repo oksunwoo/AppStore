@@ -130,7 +130,7 @@ final class ListTableViewCell: UITableViewCell {
         titleLabel.text = appItem.trackName
         genreLabel.text = appItem.primaryGenreName
         starRatingStackView?.makeStar(with: appItem.averageUserRating)
-        ratingCountLabel.text = String(appItem.userRatingCount)
+        ratingCountLabel.text = appItem.userRatingCount.ratingCountFormatter
         iconImageView.load(with: appItem.artworkURL100)
     }
 }
