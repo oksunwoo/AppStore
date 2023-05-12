@@ -35,6 +35,7 @@
 		53B3D9C82A01013300C51BDB /* StarImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53B3D9C72A01013300C51BDB /* StarImageView.swift */; };
 		53B3D9CA2A010C1000C51BDB /* StarRatingStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53B3D9C92A010C1000C51BDB /* StarRatingStackView.swift */; };
 		53B81D622A0D0D1400C9F56D /* UIImage+loadImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53B81D612A0D0D1400C9F56D /* UIImage+loadImage.swift */; };
+		53B81D642A0E447600C9F56D /* ImageCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53B81D632A0E447600C9F56D /* ImageCacheManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +80,7 @@
 		53B3D9C72A01013300C51BDB /* StarImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarImageView.swift; sourceTree = "<group>"; };
 		53B3D9C92A010C1000C51BDB /* StarRatingStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRatingStackView.swift; sourceTree = "<group>"; };
 		53B81D612A0D0D1400C9F56D /* UIImage+loadImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+loadImage.swift"; sourceTree = "<group>"; };
+		53B81D632A0E447600C9F56D /* ImageCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -210,6 +212,7 @@
 		53A2F93929ED83AE0018560C /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				53B81D632A0E447600C9F56D /* ImageCacheManager.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -377,6 +380,7 @@
 				5347112529D5CF550026A40C /* SceneDelegate.swift in Sources */,
 				537C2DA729F7E39B00942684 /* AppInformationDTO.swift in Sources */,
 				537C2DA229F6C39500942684 /* ViewModelProtocol.swift in Sources */,
+				53B81D642A0E447600C9F56D /* ImageCacheManager.swift in Sources */,
 				53A2F93C29F137550018560C /* AppCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
