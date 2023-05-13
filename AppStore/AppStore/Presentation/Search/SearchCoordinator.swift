@@ -22,7 +22,8 @@ final class SearchCoordinator: Coordinator {
     
     private func showSearchPage() {
         let navigationController = navigationController
-        let searchViewController = SearchViewController()
+        let searchViewModel = SearchViewModel(coordinator: self)
+        let searchViewController = SearchViewController(viewModel: searchViewModel)
         
         navigationController.pushViewController(searchViewController, animated: true)
     }
