@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		532312A32A1272F600890F95 /* DetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532312A22A1272F600890F95 /* DetailCoordinator.swift */; };
 		5347112329D5CF550026A40C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5347112229D5CF550026A40C /* AppDelegate.swift */; };
 		5347112529D5CF550026A40C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5347112429D5CF550026A40C /* SceneDelegate.swift */; };
 		5347112729D5CF550026A40C /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5347112629D5CF550026A40C /* SearchViewController.swift */; };
@@ -50,6 +51,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		532312A22A1272F600890F95 /* DetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCoordinator.swift; sourceTree = "<group>"; };
 		5347111F29D5CF550026A40C /* AppStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5347112229D5CF550026A40C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5347112429D5CF550026A40C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -103,6 +105,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		532312A12A1272DB00890F95 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				532312A22A1272F600890F95 /* DetailCoordinator.swift */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
 		5347111629D5CF550026A40C = {
 			isa = PBXGroup;
 			children = (
@@ -168,6 +178,7 @@
 			children = (
 				53A2F93B29F137550018560C /* AppCoordinator.swift */,
 				53A2F93D29F13A780018560C /* Search */,
+				532312A12A1272DB00890F95 /* Detail */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -372,6 +383,7 @@
 				53B3D9C82A01013300C51BDB /* StarImageView.swift in Sources */,
 				53B81D622A0D0D1400C9F56D /* UIImage+loadImage.swift in Sources */,
 				537C2DA529F7E32B00942684 /* SearchResultDTO.swift in Sources */,
+				532312A32A1272F600890F95 /* DetailCoordinator.swift in Sources */,
 				53B81D662A0E6DBB00C9F56D /* Int+formatter.swift in Sources */,
 				5347112329D5CF550026A40C /* AppDelegate.swift in Sources */,
 				53B3D9C42A00EEDB00C51BDB /* ListTableViewCell.swift in Sources */,
