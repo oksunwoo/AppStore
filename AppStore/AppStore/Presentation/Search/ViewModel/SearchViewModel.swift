@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-class SearchViewModel: ViewModelPrototol {
+class SearchViewModel: ViewModelProtocol {
     struct Input {
         let searchButtonDidTap: AnyPublisher<String, Never>
     }
