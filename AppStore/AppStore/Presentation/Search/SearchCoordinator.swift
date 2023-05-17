@@ -27,4 +27,10 @@ final class SearchCoordinator: Coordinator {
         
         navigationController.pushViewController(searchViewController, animated: true)
     }
+    
+    func showDetailPage() {
+        let detailCoordinator = DetailCoordinator(navigationController: navigationController)
+        childCoordinators.append(detailCoordinator)
+        detailCoordinator.start()
+    }
 }
