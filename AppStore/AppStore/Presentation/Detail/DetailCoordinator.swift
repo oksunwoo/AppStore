@@ -21,8 +21,8 @@ final class DetailCoordinator: Coordinator {
     }
     
     private func showDetailPage() {
-        let navigationController = navigationController
-        let detailViewModel = DetailViewModel()
-        let detailViewController = SearchViewController()
+        let detailViewController = DetailViewController()
+        
+        navigationController.pushViewController(detailViewController, animated: true)
     }
 }

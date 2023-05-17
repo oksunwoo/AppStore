@@ -136,6 +136,10 @@ extension SearchViewController: UITableViewDelegate {
         
         return CGFloat(100)
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewModel.showDetailPage()
+    }
 }
 
 extension SearchViewController {

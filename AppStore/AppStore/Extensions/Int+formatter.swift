@@ -9,7 +9,7 @@ import Foundation
 
 extension Int {
     var ratingCountFormatter: String {
-        var stringNumber = String(self)
+        let stringNumber = String(self)
         
         switch self {
         case 1000..<10000:

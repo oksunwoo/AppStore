@@ -17,7 +17,7 @@ class DetailViewModel: ViewModelProtocol {
     }
     
     func transform(input: Input) -> Output {
-        <#code#>
+        Output()
     }
     
 }

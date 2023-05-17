@@ -67,4 +67,8 @@ class SearchViewModel: ViewModelProtocol {
     private func fetchData(with keyword: String) -> AnyPublisher<SearchResultDTO, NetworkError> {
         return ItunesAPI.SearchAPI(appName: keyword).fetchData()
     }
+    
+    func showDetailPage() {
+        coordinator.showDetailPage()
+    }
 }
