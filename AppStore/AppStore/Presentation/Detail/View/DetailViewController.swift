@@ -11,11 +11,24 @@ class DetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        test()
         // Do any additional setup after loading the view.
     }
     
-
+    func test() {
+        let testview = SummaryScrollView()
+        view.backgroundColor = .white
+        view.addSubview(testview)
+        NSLayoutConstraint.activate([
+            testview.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            testview.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            testview.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            testview.heightAnchor.constraint(equalToConstant: CGFloat(100))
+            
+        
+        ])
+    }
     /*
     // MARK: - Navigation
 
