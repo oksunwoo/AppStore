@@ -23,6 +23,7 @@ final class SummaryScrollView: UIScrollView {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
         stackView.alignment = .center
+        stackView.spacing = 8
         
         return stackView
     }()
@@ -54,6 +55,7 @@ final class SummaryScrollView: UIScrollView {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
         stackView.alignment = .center
+        stackView.spacing = 8
         
         return stackView
     }()
@@ -93,6 +95,8 @@ final class SummaryScrollView: UIScrollView {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
         stackView.alignment = .center
+        stackView.distribution = .fill
+        stackView.spacing = 8
         
         return stackView
     }()
@@ -130,6 +134,7 @@ final class SummaryScrollView: UIScrollView {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
         stackView.alignment = .center
+        stackView.spacing = 8
         
         return stackView
     }()
@@ -167,6 +172,7 @@ final class SummaryScrollView: UIScrollView {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
         stackView.alignment = .center
+        stackView.spacing = 8
         
         return stackView
     }()
@@ -244,7 +250,16 @@ final class SummaryScrollView: UIScrollView {
             HStack.trailingAnchor.constraint(equalTo: trailingAnchor),
             HStack.bottomAnchor.constraint(equalTo: bottomAnchor),
             
-            starRatingStackView.heightAnchor.constraint(equalTo: contentRatingBottomTextLabel.heightAnchor)
+            starRatingStackView.heightAnchor.constraint(equalTo: contentRatingBottomTextLabel.heightAnchor),
+            genreBottomTextLabel.heightAnchor.constraint(equalTo: contentRatingBottomTextLabel.heightAnchor),
+            sellerBottomTextLabel.heightAnchor.constraint(equalTo: genreBottomTextLabel.heightAnchor),
+            languageBottomTextLabel.heightAnchor.constraint(equalTo: sellerBottomTextLabel.heightAnchor),
+            
+            genreImageView.heightAnchor.constraint(equalTo: contentRatingTextLabel.heightAnchor),
+            genreImageView.widthAnchor.constraint(equalTo: genreImageView.heightAnchor),
+            sellerImageView.heightAnchor.constraint(equalTo: genreImageView.heightAnchor),
+            sellerImageView.widthAnchor.constraint(equalTo: sellerImageView.heightAnchor),
+            languageTextLabel.heightAnchor.constraint(equalTo: sellerImageView.heightAnchor)
             
         
         ])
