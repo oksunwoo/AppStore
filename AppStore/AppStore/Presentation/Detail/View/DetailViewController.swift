@@ -7,8 +7,22 @@
 
 import UIKit
 
-class DetailViewController: UIViewController {
-
+final class DetailViewController: UIViewController {
+    private let mainScrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        
+        return scrollView
+    }()
+    
+    private let mainStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .vertical
+        
+        return stackView
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -17,16 +31,22 @@ class DetailViewController: UIViewController {
     }
     
     func test() {
-        let testview = SummaryScrollView()
+        let profile = ProfileStackView()
+        let summary = SummaryScrollView()
+       
         view.backgroundColor = .white
-        view.addSubview(testview)
-        NSLayoutConstraint.activate([
-            testview.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            testview.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            testview.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            testview.heightAnchor.constraint(equalToConstant: CGFloat(100))
-            
+        view.addSubview(mainStackView)
         
+        mainStackView.addArrangedSubview(profile)
+        mainStackView.addArrangedSubview(summary)
+        
+        NSLayoutConstraint.activate([
+            mainStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            mainStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            mainStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            mainStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+            
+            
         ])
     }
     /*
