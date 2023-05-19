@@ -14,6 +14,7 @@ final class SummaryScrollView: UIScrollView {
         stackView.axis = .horizontal
         stackView.alignment = .center
         stackView.distribution = .fillEqually
+        stackView.spacing = 10
         
         return stackView
     }()
@@ -207,6 +208,11 @@ final class SummaryScrollView: UIScrollView {
         return label
     }()
     
+    private let ratingDevider = VerticalDevider()
+    private let genreDevider = VerticalDevider()
+    private let sellerDevider = VerticalDevider()
+    private let languageDevider = VerticalDevider()
+    
     convenience init() {
         self.init(frame: .zero)
         configureUI()
@@ -223,6 +229,10 @@ final class SummaryScrollView: UIScrollView {
         HStack.addArrangedSubview(genreStackView)
         HStack.addArrangedSubview(sellerStackView)
         HStack.addArrangedSubview(languageStackView)
+        HStack.addSubview(ratingDevider)
+        HStack.addSubview(genreDevider)
+        HStack.addSubview(sellerDevider)
+        HStack.addSubview(languageDevider)
         
         ratingStackView.addArrangedSubview(ratingTitleLabel)
         ratingStackView.addArrangedSubview(ratingTextLabel)
@@ -259,10 +269,29 @@ final class SummaryScrollView: UIScrollView {
             genreImageView.widthAnchor.constraint(equalTo: genreImageView.heightAnchor),
             sellerImageView.heightAnchor.constraint(equalTo: genreImageView.heightAnchor),
             sellerImageView.widthAnchor.constraint(equalTo: sellerImageView.heightAnchor),
-            languageTextLabel.heightAnchor.constraint(equalTo: sellerImageView.heightAnchor)
+            languageTextLabel.heightAnchor.constraint(equalTo: sellerImageView.heightAnchor),
             
-        
+            ratingDevider.leadingAnchor.constraint(equalTo: ratingStackView.trailingAnchor, constant: 8),
+            ratingDevider.heightAnchor.constraint(equalTo: HStack.heightAnchor, multiplier: 0.5),
+            ratingDevider.centerYAnchor.constraint(equalTo: HStack.centerYAnchor),
+            
+            genreDevider.leadingAnchor.constraint(equalTo: contentRatingStackView.trailingAnchor, constant: 8),
+            genreDevider.heightAnchor.constraint(equalTo: HStack.heightAnchor, multiplier: 0.5),
+            genreDevider.centerYAnchor.constraint(equalTo: HStack.centerYAnchor),
+            
+            sellerDevider.leadingAnchor.constraint(equalTo: genreStackView.trailingAnchor, constant: 8),
+            sellerDevider.heightAnchor.constraint(equalTo: HStack.heightAnchor, multiplier: 0.5),
+            sellerDevider.centerYAnchor.constraint(equalTo: HStack.centerYAnchor),
+            
+            languageDevider.leadingAnchor.constraint(equalTo: sellerStackView.trailingAnchor, constant: 8),
+            languageDevider.heightAnchor.constraint(equalTo: HStack.heightAnchor, multiplier: 0.5),
+            languageDevider.centerYAnchor.constraint(equalTo: HStack.centerYAnchor),
         ])
+        
+        ratingDevider.configure()
+        genreDevider.configure()
+        sellerDevider.configure()
+        languageDevider.configure()
         
         ratingTitleLabel.text = "13만개의 평가"
         ratingTextLabel.text = "3.0"
@@ -284,5 +313,4 @@ final class SummaryScrollView: UIScrollView {
         languageTextLabel.text = "KO"
         languageBottomTextLabel.text = "+ 14개 언어"
     }
-    
 }
