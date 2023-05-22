@@ -23,6 +23,14 @@ final class DetailViewController: UIViewController {
         return stackView
     }()
     
+    private let previewCollectionView: UICollectionView = {
+        let collectionView = UICollectionView()
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.isScrollEnabled = false
+        
+        return collectionView
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
