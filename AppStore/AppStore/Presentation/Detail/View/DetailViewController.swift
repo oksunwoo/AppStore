@@ -31,7 +31,7 @@ final class DetailViewController: UIViewController {
     }
     
     func test() {
-        let profile = ProfileStackView()
+        let profile = ProfileView()
         let summary = SummaryScrollView()
        
         view.backgroundColor = .white
@@ -44,8 +44,12 @@ final class DetailViewController: UIViewController {
             mainStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             mainStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             mainStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            mainStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+            mainStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             
+            profile.leadingAnchor.constraint(equalTo: mainStackView.leadingAnchor),
+            profile.bottomAnchor.constraint(equalTo: mainStackView.bottomAnchor),
+            profile.trailingAnchor.constraint(equalTo: mainStackView.trailingAnchor),
+            summary.topAnchor.constraint(equalTo: profile.bottomAnchor)
             
         ])
     }

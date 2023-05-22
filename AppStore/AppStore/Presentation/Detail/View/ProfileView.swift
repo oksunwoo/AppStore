@@ -1,5 +1,5 @@
 //
-//  ProfileStackView.swift
+//  ProfileView.swift
 //  AppStore
 //
 //  Created by Sunwoo on 2023/05/19.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class ProfileStackView: UIStackView {
+final class ProfileView: UIView {
     private let profileImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -20,21 +20,11 @@ final class ProfileStackView: UIStackView {
         return imageView
     }()
     
-    private let textStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = .vertical
-        stackView.backgroundColor = .systemBlue
-        
-        return stackView
-    }()
-    
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .preferredFont(forTextStyle: .largeTitle)
-        label.textColor = .systemBackground
-        label.backgroundColor = .systemRed
+        label.font = .preferredFont(forTextStyle: .title2)
+        label.textColor = .black
         
         return label
     }()
@@ -44,7 +34,7 @@ final class ProfileStackView: UIStackView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .preferredFont(forTextStyle: .body)
         label.textColor = .systemGray
-        label.backgroundColor = .systemCyan
+        //label.backgroundColor = .systemCyan
     
         return label
     }()
@@ -54,7 +44,6 @@ final class ProfileStackView: UIStackView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .preferredFont(forTextStyle: .caption2)
         label.textColor = .systemGray
-        label.backgroundColor = .brown
         
         return label
     }()
@@ -66,24 +55,24 @@ final class ProfileStackView: UIStackView {
     
     func configureUI() {
         translatesAutoresizingMaskIntoConstraints = false
-        axis = .horizontal
-        spacing = 5
-        
-        addArrangedSubview(profileImageView)
-        addArrangedSubview(textStackView)
-        
-        textStackView.addArrangedSubview(titleLabel)
-        textStackView.addArrangedSubview(sellerLabel)
-        textStackView.addArrangedSubview(minimumOSLabel)
+        addSubview(profileImageView)
+        addSubview(titleLabel)
+        addSubview(sellerLabel)
+        addSubview(minimumOSLabel)
         
         NSLayoutConstraint.activate([
             profileImageView.centerYAnchor.constraint(equalTo: centerYAnchor),
             profileImageView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.3),
             profileImageView.heightAnchor.constraint(equalTo: profileImageView.widthAnchor),
             profileImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            
+            titleLabel.leadingAnchor.constraint(equalTo: profileImageView.trailingAnchor, constant: 20),
+            sellerLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
+            minimumOSLabel.leadingAnchor.constraint(equalTo: sellerLabel.leadingAnchor),
 
             titleLabel.topAnchor.constraint(equalTo: profileImageView.topAnchor),
-            minimumOSLabel.bottomAnchor.constraint(equalTo: profileImageView.bottomAnchor)
+            sellerLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 5),
+            minimumOSLabel.bottomAnchor.constraint(equalTo: profileImageView.bottomAnchor, constant: -10)
         ])
         
         profileImageView.image = UIImage(systemName: "square")
