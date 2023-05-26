@@ -24,10 +24,13 @@ final class DetailViewController: UIViewController {
     }()
     
     private let previewCollectionView: UICollectionView = {
-        let collectionView = UICollectionView()
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.isScrollEnabled = false
+        let collectionViewFlowLayout = UICollectionViewFlowLayout()
+        collectionViewFlowLayout.scrollDirection = .horizontal
         
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewFlowLayout)
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.isScrollEnabled = true
+
         return collectionView
     }()
     
@@ -39,36 +42,59 @@ final class DetailViewController: UIViewController {
     }
     
     func test() {
-        let profile = ProfileView()
-        let summary = SummaryScrollView()
-       
         view.backgroundColor = .white
         view.addSubview(mainStackView)
+        previewCollectionView.delegate = self
+        previewCollectionView.dataSource = self
         
-        mainStackView.addArrangedSubview(profile)
-        mainStackView.addArrangedSubview(summary)
+        mainStackView.addArrangedSubview(previewCollectionView)
+        previewCollectionView.register(PreviewCollectionViewCell.self, forCellWithReuseIdentifier: Text.reuseIdentifier)
+       
         
         NSLayoutConstraint.activate([
             mainStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             mainStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             mainStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             mainStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            
-            profile.leadingAnchor.constraint(equalTo: mainStackView.leadingAnchor),
-            profile.bottomAnchor.constraint(equalTo: mainStackView.bottomAnchor),
-            profile.trailingAnchor.constraint(equalTo: mainStackView.trailingAnchor),
-            summary.topAnchor.constraint(equalTo: profile.bottomAnchor)
-            
         ])
     }
-    /*
-    // MARK: - Navigation
+}
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+extension DetailViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 3
     }
-    */
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Text.reuseIdentifier, for: indexPath) as? PreviewCollectionViewCell else {
+            return UICollectionViewCell()
+        }
+        
+        cell.configureUI()
+        
+        return cell
+    }
+}
 
+extension DetailViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let estimateHeight = collectionView.frame.height * 0.7
+        let estimateWidth = UIScreen.main.bounds.width * 0.6
+        
+        return CGSize(width: estimateWidth, height: estimateHeight)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return CGFloat(15)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    }
+}
+
+extension DetailViewController {
+    enum Text {
+        static let reuseIdentifier = "PreviewCollectionViewCell"
+    }
 }
