@@ -11,6 +11,7 @@ final class DetailViewController: UIViewController {
     private let mainScrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.backgroundColor = .green
         
         return scrollView
     }()
@@ -19,9 +20,13 @@ final class DetailViewController: UIViewController {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
+        stackView.backgroundColor = .cyan
         
         return stackView
     }()
+    
+    private let profileView = ProfileView()
+    private let summaryScrollView = SummaryScrollView()
     
     private let previewCollectionView: UICollectionView = {
         let collectionViewFlowLayout = UICollectionViewFlowLayout()
@@ -37,26 +42,73 @@ final class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        test()
-        // Do any additional setup after loading the view.
+        configureUI()
+        
     }
     
-    func test() {
+    private func configureUI() {
+        configureBackground()
+        configureNavigation()
+        configureLayout()
+        configureCollectionView()
+    }
+    
+    private func configureBackground() {
         view.backgroundColor = .white
-        view.addSubview(mainStackView)
-        previewCollectionView.delegate = self
-        previewCollectionView.dataSource = self
+    }
+    
+    private func configureNavigation() {
+        navigationItem.largeTitleDisplayMode = .never
+    }
+    
+    private func configureLayout() {
+        let scrollContentGuide = mainScrollView.contentLayoutGuide
+        let scrollFrameGuide = mainScrollView.frameLayoutGuide
         
-        mainStackView.addArrangedSubview(previewCollectionView)
-        previewCollectionView.register(PreviewCollectionViewCell.self, forCellWithReuseIdentifier: Text.reuseIdentifier)
-       
+        view.addSubview(mainScrollView)
+        mainScrollView.addSubview(mainStackView)
+        mainStackView.addArrangedSubview(profileView)
+        profileView.backgroundColor = .red
+        mainStackView.addArrangedSubview(summaryScrollView)
+//        mainStackView.addArrangedSubview(previewCollectionView)
         
         NSLayoutConstraint.activate([
-            mainStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            mainStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            mainStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            mainStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            mainScrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            mainScrollView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            mainScrollView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            mainScrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            mainScrollView.contentLayoutGuide.widthAnchor.constraint(equalTo: mainScrollView.widthAnchor),
+            
+            mainStackView.leadingAnchor.constraint(equalTo: scrollContentGuide.leadingAnchor),
+            mainStackView.topAnchor.constraint(equalTo: scrollContentGuide.topAnchor),
+            mainStackView.bottomAnchor.constraint(equalTo: scrollContentGuide.bottomAnchor),
+            mainStackView.trailingAnchor.constraint(equalTo: scrollContentGuide.trailingAnchor),
+            
+            mainStackView.leadingAnchor.constraint(equalTo: scrollFrameGuide.leadingAnchor),
+            mainStackView.trailingAnchor.constraint(equalTo: scrollFrameGuide.trailingAnchor),
+            mainStackView.heightAnchor.constraint(equalTo: scrollFrameGuide.heightAnchor),
+            
+            profileView.topAnchor.constraint(equalTo: mainStackView.topAnchor),
+            profileView.heightAnchor.constraint(equalTo: mainStackView.heightAnchor, multiplier: 0.2)
+            
+            
+            
+//            mainStackView.widthAnchor.constraint(equalTo: view.safeAreaLayoutGuide.widthAnchor),
+//            mainStackView.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.heightAnchor),
+//            mainStackView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
+//            mainStackView.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor),
+            
+//            mainStackView.topAnchor.constraint(equalTo: mainScrollView.topAnchor),
+//            mainStackView.leadingAnchor.constraint(equalTo: mainScrollView.leadingAnchor),
+//            mainStackView.trailingAnchor.constraint(equalTo: mainScrollView.trailingAnchor),
+//            mainStackView.bottomAnchor.constraint(equalTo: mainScrollView.bottomAnchor),
         ])
+    }
+    
+    private func configureCollectionView() {
+        previewCollectionView.delegate = self
+        previewCollectionView.dataSource = self
+        previewCollectionView.register(PreviewCollectionViewCell.self, forCellWithReuseIdentifier: Text.reuseIdentifier)
     }
 }
 
