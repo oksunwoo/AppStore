@@ -44,6 +44,7 @@
 		53B81D622A0D0D1400C9F56D /* UIImage+loadImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53B81D612A0D0D1400C9F56D /* UIImage+loadImage.swift */; };
 		53B81D642A0E447600C9F56D /* ImageCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53B81D632A0E447600C9F56D /* ImageCacheManager.swift */; };
 		53B81D662A0E6DBB00C9F56D /* Int+formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53B81D652A0E6DBB00C9F56D /* Int+formatter.swift */; };
+		53C96E562A26348A0017F758 /* InformationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C96E552A26348A0017F758 /* InformationTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +98,7 @@
 		53B81D612A0D0D1400C9F56D /* UIImage+loadImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+loadImage.swift"; sourceTree = "<group>"; };
 		53B81D632A0E447600C9F56D /* ImageCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheManager.swift; sourceTree = "<group>"; };
 		53B81D652A0E6DBB00C9F56D /* Int+formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+formatter.swift"; sourceTree = "<group>"; };
+		53C96E552A26348A0017F758 /* InformationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +145,7 @@
 				532312AC2A14FE0E00890F95 /* SummaryScrollView.swift */,
 				532312B02A17794A00890F95 /* VerticalDevider.swift */,
 				532313142A1B73B500890F95 /* PreviewCollectionViewCell.swift */,
+				53C96E552A26348A0017F758 /* InformationTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -431,6 +434,7 @@
 				537C2DAB29F963D600942684 /* APIResponse.swift in Sources */,
 				53B3D9CA2A010C1000C51BDB /* StarRatingStackView.swift in Sources */,
 				53A2F94029F164560018560C /* SearchCoordinator.swift in Sources */,
+				53C96E562A26348A0017F758 /* InformationTableViewCell.swift in Sources */,
 				537C2DAD29FAAB5700942684 /* NetworkError.swift in Sources */,
 				5347112529D5CF550026A40C /* SceneDelegate.swift in Sources */,
 				532312B32A17A3CA00890F95 /* ProfileView.swift in Sources */,
