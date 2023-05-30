@@ -39,11 +39,19 @@ final class DetailViewController: UIViewController {
         return collectionView
     }()
     
+    private let informationTableView: UITableView = {
+        let tableView = UITableView()
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.isScrollEnabled = false
+        tableView.isUserInteractionEnabled = false
+        
+        return tableView
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configureUI()
-        
     }
     
     private func configureUI() {
@@ -67,6 +75,7 @@ final class DetailViewController: UIViewController {
         mainStackView.addArrangedSubview(profileView)
         mainStackView.addArrangedSubview(summaryScrollView)
         mainStackView.addArrangedSubview(previewCollectionView)
+        mainStackView.addArrangedSubview(informationTableView)
         
         NSLayoutConstraint.activate([
             mainScrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
@@ -124,6 +133,16 @@ extension DetailViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    }
+}
+
+extension DetailViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 7
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return UITableViewCell()
     }
 }
 
