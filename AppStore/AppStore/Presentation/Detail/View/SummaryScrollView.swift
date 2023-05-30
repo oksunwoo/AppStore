@@ -35,6 +35,7 @@ final class SummaryScrollView: UIScrollView {
         label.textAlignment = .center
         label.textColor = .systemGray
         label.font = .preferredFont(forTextStyle: .caption2)
+        label.setContentHuggingPriority(.required, for: .horizontal)
         
         return label
     }()
@@ -44,7 +45,7 @@ final class SummaryScrollView: UIScrollView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
         label.textColor = .systemGray
-        label.font = .preferredFont(forTextStyle: .largeTitle)
+        label.font = .preferredFont(forTextStyle: .title2)
         
         return label
     }()
@@ -76,7 +77,7 @@ final class SummaryScrollView: UIScrollView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
         label.textColor = .systemGray
-        label.font = .preferredFont(forTextStyle: .largeTitle)
+        label.font = .preferredFont(forTextStyle: .title2)
         
         return label
     }()
@@ -193,7 +194,7 @@ final class SummaryScrollView: UIScrollView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
         label.textColor = .systemGray
-        label.font = .preferredFont(forTextStyle: .title1)
+        label.font = .preferredFont(forTextStyle: .title2)
         
         return label
     }()
@@ -264,6 +265,16 @@ final class SummaryScrollView: UIScrollView {
             genreBottomTextLabel.heightAnchor.constraint(equalTo: contentRatingBottomTextLabel.heightAnchor),
             sellerBottomTextLabel.heightAnchor.constraint(equalTo: genreBottomTextLabel.heightAnchor),
             languageBottomTextLabel.heightAnchor.constraint(equalTo: sellerBottomTextLabel.heightAnchor),
+            
+            ratingStackView.centerYAnchor.constraint(equalTo: centerYAnchor),
+            contentRatingStackView.centerYAnchor.constraint(equalTo: centerYAnchor),
+            genreStackView.centerYAnchor.constraint(equalTo: centerYAnchor),
+            sellerStackView.centerYAnchor.constraint(equalTo: centerYAnchor),
+            languageStackView.centerYAnchor.constraint(equalTo: centerYAnchor),
+            
+            ratingTextLabel.heightAnchor.constraint(equalTo: contentRatingTextLabel.heightAnchor, multiplier: 1.0),
+            starRatingStackView.widthAnchor.constraint(equalTo: ratingTitleLabel.widthAnchor, multiplier: 1.0),
+            starRatingStackView.widthAnchor.constraint(equalTo: ratingStackView.widthAnchor, multiplier: 0.62),
             
             genreImageView.heightAnchor.constraint(equalTo: contentRatingTextLabel.heightAnchor),
             genreImageView.widthAnchor.constraint(equalTo: genreImageView.heightAnchor),
