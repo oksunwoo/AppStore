@@ -11,7 +11,7 @@ final class DetailViewController: UIViewController {
     private let mainScrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
-//        scrollView.backgroundColor = .green
+        scrollView.backgroundColor = .green
         
         return scrollView
     }()
@@ -20,7 +20,7 @@ final class DetailViewController: UIViewController {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
-//        stackView.backgroundColor = .cyan
+        stackView.backgroundColor = .cyan
         
         return stackView
     }()
@@ -62,9 +62,6 @@ final class DetailViewController: UIViewController {
     }
     
     private func configureLayout() {
-        let scrollContentGuide = mainScrollView.contentLayoutGuide
-        let scrollFrameGuide = mainScrollView.frameLayoutGuide
-        
         view.addSubview(mainScrollView)
         mainScrollView.addSubview(mainStackView)
         mainStackView.addArrangedSubview(profileView)
@@ -76,21 +73,17 @@ final class DetailViewController: UIViewController {
             mainScrollView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             mainScrollView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             mainScrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            mainScrollView.contentLayoutGuide.widthAnchor.constraint(equalTo: mainScrollView.widthAnchor),
             
-            mainStackView.leadingAnchor.constraint(equalTo: scrollContentGuide.leadingAnchor),
-            mainStackView.topAnchor.constraint(equalTo: scrollContentGuide.topAnchor),
-            mainStackView.bottomAnchor.constraint(equalTo: scrollContentGuide.bottomAnchor),
-            mainStackView.trailingAnchor.constraint(equalTo: scrollContentGuide.trailingAnchor),
+            mainStackView.leadingAnchor.constraint(equalTo: mainScrollView.leadingAnchor),
+            mainStackView.topAnchor.constraint(equalTo: mainScrollView.topAnchor),
+            mainStackView.bottomAnchor.constraint(equalTo: mainScrollView.bottomAnchor),
+            mainStackView.trailingAnchor.constraint(equalTo: mainScrollView.trailingAnchor),
+            mainStackView.widthAnchor.constraint(equalTo: mainScrollView.widthAnchor),
             
-            mainStackView.leadingAnchor.constraint(equalTo: scrollFrameGuide.leadingAnchor),
-            mainStackView.trailingAnchor.constraint(equalTo: scrollFrameGuide.trailingAnchor),
-            mainStackView.heightAnchor.constraint(equalTo: scrollFrameGuide.heightAnchor),
+            profileView.widthAnchor.constraint(equalTo: mainStackView.widthAnchor),
+            profileView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.2),
             
-            profileView.topAnchor.constraint(equalTo: mainStackView.topAnchor),
-            profileView.heightAnchor.constraint(equalTo: mainStackView.heightAnchor, multiplier: 0.2),
-            
-            summaryScrollView.heightAnchor.constraint(equalTo: profileView.heightAnchor, multiplier: 0.7),
+            previewCollectionView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.6)
         ])
     }
     
