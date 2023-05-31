@@ -69,6 +69,8 @@ final class DetailViewController: UIViewController {
     }
     
     private func configureNavigation() {
+        let image = UIImage(systemName: "square")
+        navigationItem.titleView = UIImageView(image: image)
         navigationItem.largeTitleDisplayMode = .never
     }
     
