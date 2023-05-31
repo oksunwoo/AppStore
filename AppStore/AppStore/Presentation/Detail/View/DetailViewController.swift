@@ -11,7 +11,7 @@ final class DetailViewController: UIViewController {
     private let mainScrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
-        scrollView.backgroundColor = .green
+//        scrollView.backgroundColor = .green
         
         return scrollView
     }()
@@ -20,7 +20,7 @@ final class DetailViewController: UIViewController {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
-        stackView.backgroundColor = .cyan
+//        stackView.backgroundColor = .cyan
         
         return stackView
     }()
@@ -35,6 +35,7 @@ final class DetailViewController: UIViewController {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewFlowLayout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.isScrollEnabled = true
+        collectionView.showsHorizontalScrollIndicator = false
 
         return collectionView
     }()
@@ -44,6 +45,7 @@ final class DetailViewController: UIViewController {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.isScrollEnabled = false
         tableView.isUserInteractionEnabled = false
+        tableView.separatorInset.right = 15
         
         return tableView
     }()
@@ -59,6 +61,7 @@ final class DetailViewController: UIViewController {
         configureNavigation()
         configureLayout()
         configureCollectionView()
+        configureTableView()
     }
     
     private func configureBackground() {
@@ -92,14 +95,20 @@ final class DetailViewController: UIViewController {
             profileView.widthAnchor.constraint(equalTo: mainStackView.widthAnchor),
             profileView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.2),
             
-            previewCollectionView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.6)
+            previewCollectionView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.6),
+            informationTableView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.5)
         ])
     }
     
     private func configureCollectionView() {
         previewCollectionView.delegate = self
         previewCollectionView.dataSource = self
-        previewCollectionView.register(PreviewCollectionViewCell.self, forCellWithReuseIdentifier: Text.reuseIdentifier)
+        previewCollectionView.register(PreviewCollectionViewCell.self, forCellWithReuseIdentifier: Text.previewCellIdentifier)
+    }
+    
+    private func configureTableView() {
+        informationTableView.dataSource = self
+        informationTableView.register(InformationTableViewCell.self, forCellReuseIdentifier: Text.InformationCellIdentifier)
     }
 }
 
@@ -109,7 +118,7 @@ extension DetailViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Text.reuseIdentifier, for: indexPath) as? PreviewCollectionViewCell else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Text.previewCellIdentifier, for: indexPath) as? PreviewCollectionViewCell else {
             return UICollectionViewCell()
         }
         
@@ -142,12 +151,19 @@ extension DetailViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: Text.InformationCellIdentifier, for: indexPath) as? InformationTableViewCell else {
+            return UITableViewCell()
+        }
+        
+        cell.configureUI()
+        
+        return cell
     }
 }
 
 extension DetailViewController {
     enum Text {
-        static let reuseIdentifier = "PreviewCollectionViewCell"
+        static let previewCellIdentifier = "PreviewCollectionViewCell"
+        static let InformationCellIdentifier = "InformationTableViewCell"
     }
 }
