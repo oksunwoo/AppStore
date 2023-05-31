@@ -34,7 +34,6 @@ final class ProfileView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .preferredFont(forTextStyle: .body)
         label.textColor = .systemGray
-        //label.backgroundColor = .systemCyan
     
         return label
     }()

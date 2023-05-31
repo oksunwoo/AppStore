@@ -38,7 +38,7 @@ final class InformationTableViewCell: UITableViewCell {
         addSubview(contentLabel)
         
         NSLayoutConstraint.activate([
-            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15),
+            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
             titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
             
             contentLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15),

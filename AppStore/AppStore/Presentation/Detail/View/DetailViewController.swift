@@ -20,6 +20,7 @@ final class DetailViewController: UIViewController {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
+        stackView.spacing = 10
 //        stackView.backgroundColor = .cyan
         
         return stackView
@@ -45,10 +46,16 @@ final class DetailViewController: UIViewController {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.isScrollEnabled = false
         tableView.isUserInteractionEnabled = false
+        tableView.separatorInset.left = 0
         tableView.separatorInset.right = 15
         
         return tableView
     }()
+    
+    private let profileDevider = HorizontalDevider()
+    private let summaryDevider = HorizontalDevider()
+    private let previewDevider = HorizontalDevider()
+    private let informationDevider = HorizontalDevider()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,13 +85,16 @@ final class DetailViewController: UIViewController {
         view.addSubview(mainScrollView)
         mainScrollView.addSubview(mainStackView)
         mainStackView.addArrangedSubview(profileView)
+        mainStackView.addArrangedSubview(profileDevider)
         mainStackView.addArrangedSubview(summaryScrollView)
+        mainStackView.addArrangedSubview(summaryDevider)
         mainStackView.addArrangedSubview(previewCollectionView)
+        mainStackView.addArrangedSubview(previewDevider)
         mainStackView.addArrangedSubview(informationTableView)
         
         NSLayoutConstraint.activate([
             mainScrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            mainScrollView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            mainScrollView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 15),
             mainScrollView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             mainScrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             
@@ -95,7 +105,7 @@ final class DetailViewController: UIViewController {
             mainStackView.widthAnchor.constraint(equalTo: mainScrollView.widthAnchor),
             
             profileView.widthAnchor.constraint(equalTo: mainStackView.widthAnchor),
-            profileView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.2),
+            profileView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.16),
             
             previewCollectionView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.6),
             informationTableView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.5)

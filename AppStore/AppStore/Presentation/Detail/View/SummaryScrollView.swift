@@ -299,11 +299,6 @@ final class SummaryScrollView: UIScrollView {
             languageDevider.centerYAnchor.constraint(equalTo: HStack.centerYAnchor),
         ])
         
-        ratingDevider.configure()
-        genreDevider.configure()
-        sellerDevider.configure()
-        languageDevider.configure()
-        
         ratingTitleLabel.text = "13만개의 평가"
         ratingTextLabel.text = "3.0"
         starRatingStackView.makeStar(with: 4.0)

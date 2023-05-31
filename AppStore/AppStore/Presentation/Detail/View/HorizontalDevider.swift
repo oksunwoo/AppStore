@@ -1,13 +1,13 @@
 //
-//  VerticalDevider.swift
+//  HorizontalDevider.swift
 //  AppStore
 //
-//  Created by Sunwoo on 2023/05/19.
+//  Created by Sunwoo on 2023/05/31.
 //
 
 import UIKit
 
-final class VerticalDevider: UIView {
+final class HorizontalDevider: UIView {
     convenience init() {
         self.init(frame: .zero)
         configure()
@@ -15,7 +15,7 @@ final class VerticalDevider: UIView {
     
     private func configure() {
         translatesAutoresizingMaskIntoConstraints = false
-        widthAnchor.constraint(equalToConstant: 0.5).isActive = true
-        backgroundColor = .systemGray3
+        heightAnchor.constraint(equalToConstant: 0.5).isActive = true
+        backgroundColor = .systemGray4
     }
 }
