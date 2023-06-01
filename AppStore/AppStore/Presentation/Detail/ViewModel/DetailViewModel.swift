@@ -16,6 +16,14 @@ class DetailViewModel: ViewModelProtocol {
         
     }
     
+    private weak var coordinator: DetailCoordinator!
+    private let appInformation: AppInformation!
+    
+    init(coordinator: DetailCoordinator, appInformation: AppInformation) {
+        self.coordinator = coordinator
+        self.appInformation = appInformation
+    }
+    
     func transform(input: Input) -> Output {
         Output()
     }

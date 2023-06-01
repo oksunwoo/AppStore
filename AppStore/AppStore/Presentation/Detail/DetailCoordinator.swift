@@ -16,12 +16,13 @@ final class DetailCoordinator: Coordinator {
         self.navigationController = navigationController
     }
     
-    func start() {
-        showDetailPage()
+    func start(with appInformation: AppInformation) {
+        showDetailPage(with: appInformation)
     }
     
-    private func showDetailPage() {
-        let detailViewController = DetailViewController()
+    private func showDetailPage(with appInformation: AppInformation) {
+        let detailViewModel = DetailViewModel(coordinator: self, appInformation: appInformation)
+        let detailViewController = DetailViewController(viewModel: detailViewModel)
         
         navigationController.pushViewController(detailViewController, animated: true)
     }

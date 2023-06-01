@@ -92,6 +92,13 @@ final class DetailViewController: UIViewController {
     private let previewDevider = HorizontalDevider()
     private let descriptionDevider = HorizontalDevider()
     
+    private var viewModel : DetailViewModel!
+    
+    convenience init(viewModel: DetailViewModel) {
+        self.init()
+        self.viewModel = viewModel
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
