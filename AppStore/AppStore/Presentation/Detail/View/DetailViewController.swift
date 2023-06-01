@@ -28,6 +28,7 @@ final class DetailViewController: UIViewController {
     
     private let profileView = ProfileView()
     private let summaryScrollView = SummaryScrollView()
+    private let newReleaseView = ReadMoreTextView(textType: .release)
     
     private let previewCollectionView: UICollectionView = {
         let collectionViewFlowLayout = UICollectionViewFlowLayout()
@@ -40,6 +41,8 @@ final class DetailViewController: UIViewController {
 
         return collectionView
     }()
+    
+    private let descriptionTextView = ReadMoreTextView(textType: .description)
     
     private let informationTableView: UITableView = {
         let tableView = UITableView()
@@ -54,6 +57,7 @@ final class DetailViewController: UIViewController {
     
     private let profileDevider = HorizontalDevider()
     private let summaryDevider = HorizontalDevider()
+    private let newReleaseDevider = HorizontalDevider()
     private let previewDevider = HorizontalDevider()
     private let informationDevider = HorizontalDevider()
     
@@ -88,7 +92,10 @@ final class DetailViewController: UIViewController {
         mainStackView.addArrangedSubview(profileDevider)
         mainStackView.addArrangedSubview(summaryScrollView)
         mainStackView.addArrangedSubview(summaryDevider)
+        mainStackView.addArrangedSubview(newReleaseView)
+        mainStackView.addArrangedSubview(newReleaseDevider)
         mainStackView.addArrangedSubview(previewCollectionView)
+        mainStackView.addArrangedSubview(descriptionTextView)
         mainStackView.addArrangedSubview(previewDevider)
         mainStackView.addArrangedSubview(informationTableView)
         
