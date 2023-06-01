@@ -21,7 +21,7 @@ final class ReadMoreTextView: UITextView {
     private func configure(textType: TextType) {
         isEditable = false
         font = .preferredFont(forTextStyle: .callout)
-        textColor = .black
+        textColor = .label
         textAlignment = .left
         translatesAutoresizingMaskIntoConstraints = false
         isSelectable = false

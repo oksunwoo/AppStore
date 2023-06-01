@@ -24,7 +24,7 @@ final class ProfileView: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .preferredFont(forTextStyle: .title2)
-        label.textColor = .black
+        label.textColor = .label
         
         return label
     }()

@@ -24,7 +24,7 @@ final class SearchViewController: UIViewController {
     private let listTableView: UITableView = {
        let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.separatorStyle = .singleLine
+        tableView.separatorStyle = .none
         
         return tableView
     }()

@@ -114,7 +114,7 @@ final class DetailViewController: UIViewController {
     }
     
     private func configureBackground() {
-        view.backgroundColor = .white
+        view.backgroundColor = .label
     }
     
     private func configureNavigation() {

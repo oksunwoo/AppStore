@@ -22,7 +22,7 @@ final class InformationTableViewCell: UITableViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .preferredFont(forTextStyle: .callout)
-        label.textColor = .black
+        label.textColor = .label
         label.setContentHuggingPriority(.defaultLow, for: .horizontal)
         
         return label
