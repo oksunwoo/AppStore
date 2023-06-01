@@ -138,7 +138,7 @@ extension SearchViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        viewModel.showDetailPage()
+        viewModel.showDetailPage(with: appsInformation[indexPath.row])
     }
 }
 

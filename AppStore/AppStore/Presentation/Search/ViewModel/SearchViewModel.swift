@@ -68,7 +68,7 @@ class SearchViewModel: ViewModelProtocol {
         return ItunesAPI.SearchAPI(appName: keyword).fetchData()
     }
     
-    func showDetailPage() {
-        coordinator.showDetailPage()
+    func showDetailPage(with appInformation: AppInformation) {
+        coordinator.showDetailPage(with: appInformation)
     }
 }
