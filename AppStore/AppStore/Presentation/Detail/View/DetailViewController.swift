@@ -30,6 +30,17 @@ final class DetailViewController: UIViewController {
     private let summaryScrollView = SummaryScrollView()
     private let newReleaseView = ReadMoreTextView(textType: .release)
     
+    private let newReleaseLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textAlignment = .left
+        label.font = .preferredFont(forTextStyle: .headline)
+        label.textColor = .label
+        label.text = Text.newReleaseTitle
+        
+        return label
+    }()
+    
     private let previewCollectionView: UICollectionView = {
         let collectionViewFlowLayout = UICollectionViewFlowLayout()
         collectionViewFlowLayout.scrollDirection = .horizontal
@@ -42,7 +53,29 @@ final class DetailViewController: UIViewController {
         return collectionView
     }()
     
+    private let previewLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textAlignment = .left
+        label.font = .preferredFont(forTextStyle: .headline)
+        label.textColor = .label
+        label.text = Text.previewTitle
+        
+        return label
+    }()
+    
     private let descriptionTextView = ReadMoreTextView(textType: .description)
+    
+    private let informationLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textAlignment = .left
+        label.font = .preferredFont(forTextStyle: .headline)
+        label.textColor = .label
+        label.text = Text.informationTitle
+        
+        return label
+    }()
     
     private let informationTableView: UITableView = {
         let tableView = UITableView()
@@ -59,7 +92,7 @@ final class DetailViewController: UIViewController {
     private let summaryDevider = HorizontalDevider()
     private let newReleaseDevider = HorizontalDevider()
     private let previewDevider = HorizontalDevider()
-    private let informationDevider = HorizontalDevider()
+    private let descriptionDevider = HorizontalDevider()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -92,11 +125,15 @@ final class DetailViewController: UIViewController {
         mainStackView.addArrangedSubview(profileDevider)
         mainStackView.addArrangedSubview(summaryScrollView)
         mainStackView.addArrangedSubview(summaryDevider)
+        mainStackView.addArrangedSubview(newReleaseLabel)
         mainStackView.addArrangedSubview(newReleaseView)
         mainStackView.addArrangedSubview(newReleaseDevider)
+        mainStackView.addArrangedSubview(previewLabel)
         mainStackView.addArrangedSubview(previewCollectionView)
-        mainStackView.addArrangedSubview(descriptionTextView)
         mainStackView.addArrangedSubview(previewDevider)
+        mainStackView.addArrangedSubview(descriptionTextView)
+        mainStackView.addArrangedSubview(descriptionDevider)
+        mainStackView.addArrangedSubview(informationLabel)
         mainStackView.addArrangedSubview(informationTableView)
         
         NSLayoutConstraint.activate([
@@ -182,6 +219,9 @@ extension DetailViewController: UITableViewDataSource {
 
 extension DetailViewController {
     enum Text {
+        static let newReleaseTitle = "새로운 기능"
+        static let previewTitle = "미리보기"
+        static let informationTitle = "정보"
         static let previewCellIdentifier = "PreviewCollectionViewCell"
         static let InformationCellIdentifier = "InformationTableViewCell"
     }
