@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Combine
 
 final class DetailViewController: UIViewController {
     private let mainScrollView: UIScrollView = {
@@ -95,17 +96,28 @@ final class DetailViewController: UIViewController {
     private let descriptionDevider = HorizontalDevider()
     
     private var viewModel : DetailViewModel!
+    private var appInformation: AppInformation?
+    
+    private let appear = PassthroughSubject<Void, Never>()
+    private var cancellable = Set<AnyCancellable>()
+   
     
     convenience init(viewModel: DetailViewModel) {
         self.init()
         self.viewModel = viewModel
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        appear.send()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configureUI()
-        
+        bind()
     }
     
     private func configureUI() {
@@ -173,6 +185,24 @@ final class DetailViewController: UIViewController {
     private func configureTableView() {
         informationTableView.dataSource = self
         informationTableView.register(InformationTableViewCell.self, forCellReuseIdentifier: Text.InformationCellIdentifier)
+    }
+}
+
+extension DetailViewController {
+    private func bind() {
+        let input = DetailViewModel.Input(appear: appear.eraseToAnyPublisher())
+        let output = viewModel.transform(input: input)
+        
+        configureUIContents(with: output.appInformation)
+    }
+    
+    private func configureUIContents(with ouputPublisher: AnyPublisher<AppInformation, Never>) {
+        ouputPublisher
+            .receive(on: DispatchQueue.main)
+            .sink { appInformation in
+                self.appInformation = appInformation
+            }
+            .store(in: &cancellable)
     }
 }
 
