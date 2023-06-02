@@ -11,6 +11,7 @@ final class DetailViewController: UIViewController {
     private let mainScrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.backgroundColor = .systemBackground
         
         return scrollView
     }()
@@ -20,6 +21,7 @@ final class DetailViewController: UIViewController {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
         stackView.spacing = 10
+        stackView.backgroundColor = .systemBackground
         
         return stackView
     }()
@@ -103,6 +105,7 @@ final class DetailViewController: UIViewController {
         super.viewDidLoad()
         
         configureUI()
+        
     }
     
     private func configureUI() {
@@ -114,7 +117,7 @@ final class DetailViewController: UIViewController {
     }
     
     private func configureBackground() {
-        view.backgroundColor = .label
+        view.backgroundColor = .systemBackground
     }
     
     private func configureNavigation() {
