@@ -209,10 +209,10 @@ final class SummaryScrollView: UIScrollView {
         return label
     }()
     
-    private let ratingDevider = VerticalDevider()
-    private let genreDevider = VerticalDevider()
-    private let sellerDevider = VerticalDevider()
-    private let languageDevider = VerticalDevider()
+    private let ratingDivider = VerticalDivider()
+    private let genreDivider = VerticalDivider()
+    private let sellerDivider = VerticalDivider()
+    private let languageDivider = VerticalDivider()
     
     convenience init() {
         self.init(frame: .zero)
@@ -230,10 +230,10 @@ final class SummaryScrollView: UIScrollView {
         HStack.addArrangedSubview(genreStackView)
         HStack.addArrangedSubview(sellerStackView)
         HStack.addArrangedSubview(languageStackView)
-        HStack.addSubview(ratingDevider)
-        HStack.addSubview(genreDevider)
-        HStack.addSubview(sellerDevider)
-        HStack.addSubview(languageDevider)
+        HStack.addSubview(ratingDivider)
+        HStack.addSubview(genreDivider)
+        HStack.addSubview(sellerDivider)
+        HStack.addSubview(languageDivider)
         
         ratingStackView.addArrangedSubview(ratingTitleLabel)
         ratingStackView.addArrangedSubview(ratingTextLabel)
@@ -282,21 +282,21 @@ final class SummaryScrollView: UIScrollView {
             sellerImageView.widthAnchor.constraint(equalTo: sellerImageView.heightAnchor),
             languageTextLabel.heightAnchor.constraint(equalTo: sellerImageView.heightAnchor),
             
-            ratingDevider.leadingAnchor.constraint(equalTo: ratingStackView.trailingAnchor, constant: 8),
-            ratingDevider.heightAnchor.constraint(equalTo: HStack.heightAnchor, multiplier: 0.5),
-            ratingDevider.centerYAnchor.constraint(equalTo: HStack.centerYAnchor),
+            ratingDivider.leadingAnchor.constraint(equalTo: ratingStackView.trailingAnchor, constant: 8),
+            ratingDivider.heightAnchor.constraint(equalTo: HStack.heightAnchor, multiplier: 0.5),
+            ratingDivider.centerYAnchor.constraint(equalTo: HStack.centerYAnchor),
             
-            genreDevider.leadingAnchor.constraint(equalTo: contentRatingStackView.trailingAnchor, constant: 8),
-            genreDevider.heightAnchor.constraint(equalTo: HStack.heightAnchor, multiplier: 0.5),
-            genreDevider.centerYAnchor.constraint(equalTo: HStack.centerYAnchor),
+            genreDivider.leadingAnchor.constraint(equalTo: contentRatingStackView.trailingAnchor, constant: 8),
+            genreDivider.heightAnchor.constraint(equalTo: HStack.heightAnchor, multiplier: 0.5),
+            genreDivider.centerYAnchor.constraint(equalTo: HStack.centerYAnchor),
             
-            sellerDevider.leadingAnchor.constraint(equalTo: genreStackView.trailingAnchor, constant: 8),
-            sellerDevider.heightAnchor.constraint(equalTo: HStack.heightAnchor, multiplier: 0.5),
-            sellerDevider.centerYAnchor.constraint(equalTo: HStack.centerYAnchor),
+            sellerDivider.leadingAnchor.constraint(equalTo: genreStackView.trailingAnchor, constant: 8),
+            sellerDivider.heightAnchor.constraint(equalTo: HStack.heightAnchor, multiplier: 0.5),
+            sellerDivider.centerYAnchor.constraint(equalTo: HStack.centerYAnchor),
             
-            languageDevider.leadingAnchor.constraint(equalTo: sellerStackView.trailingAnchor, constant: 8),
-            languageDevider.heightAnchor.constraint(equalTo: HStack.heightAnchor, multiplier: 0.5),
-            languageDevider.centerYAnchor.constraint(equalTo: HStack.centerYAnchor),
+            languageDivider.leadingAnchor.constraint(equalTo: sellerStackView.trailingAnchor, constant: 8),
+            languageDivider.heightAnchor.constraint(equalTo: HStack.heightAnchor, multiplier: 0.5),
+            languageDivider.centerYAnchor.constraint(equalTo: HStack.centerYAnchor),
         ])
         
         ratingTitleLabel.text = "13만개의 평가"

@@ -1,5 +1,5 @@
 //
-//  HorizontalDevider.swift
+//  HorizontalDivider.swift
 //  AppStore
 //
 //  Created by Sunwoo on 2023/05/31.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class HorizontalDevider: UIView {
+final class HorizontalDivider: UIView {
     convenience init() {
         self.init(frame: .zero)
         configure()

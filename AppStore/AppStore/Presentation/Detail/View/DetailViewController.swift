@@ -89,11 +89,11 @@ final class DetailViewController: UIViewController {
         return tableView
     }()
     
-    private let profileDevider = HorizontalDevider()
-    private let summaryDevider = HorizontalDevider()
-    private let newReleaseDevider = HorizontalDevider()
-    private let previewDevider = HorizontalDevider()
-    private let descriptionDevider = HorizontalDevider()
+    private let profileDivider = HorizontalDivider()
+    private let summaryDivider = HorizontalDivider()
+    private let newReleaseDivider = HorizontalDivider()
+    private let previewDivider = HorizontalDivider()
+    private let descriptionDivider = HorizontalDivider()
     
     private var viewModel : DetailViewModel!
     private var appInformation: AppInformation?
@@ -142,17 +142,17 @@ final class DetailViewController: UIViewController {
         view.addSubview(mainScrollView)
         mainScrollView.addSubview(mainStackView)
         mainStackView.addArrangedSubview(profileView)
-        mainStackView.addArrangedSubview(profileDevider)
+        mainStackView.addArrangedSubview(profileDivider)
         mainStackView.addArrangedSubview(summaryScrollView)
-        mainStackView.addArrangedSubview(summaryDevider)
+        mainStackView.addArrangedSubview(summaryDivider)
         mainStackView.addArrangedSubview(newReleaseLabel)
         mainStackView.addArrangedSubview(newReleaseView)
-        mainStackView.addArrangedSubview(newReleaseDevider)
+        mainStackView.addArrangedSubview(newReleaseDivider)
         mainStackView.addArrangedSubview(previewLabel)
         mainStackView.addArrangedSubview(previewCollectionView)
-        mainStackView.addArrangedSubview(previewDevider)
+        mainStackView.addArrangedSubview(previewDivider)
         mainStackView.addArrangedSubview(descriptionTextView)
-        mainStackView.addArrangedSubview(descriptionDevider)
+        mainStackView.addArrangedSubview(descriptionDivider)
         mainStackView.addArrangedSubview(informationLabel)
         mainStackView.addArrangedSubview(informationTableView)
         
