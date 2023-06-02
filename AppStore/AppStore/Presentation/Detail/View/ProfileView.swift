@@ -52,7 +52,14 @@ final class ProfileView: UIView {
         configureUI()
     }
     
-    func configureUI() {
+    func apply(with appInformation: AppInformation) {
+        profileImageView.load(with: appInformation.artworkURL100)
+        titleLabel.text = appInformation.trackName
+        sellerLabel.text = appInformation.sellerName
+        minimumOSLabel.text = "최소 iOS 버전이 9.0 이상이여야 합니다."
+    }
+    
+    private func configureUI() {
         translatesAutoresizingMaskIntoConstraints = false
         addSubview(profileImageView)
         addSubview(titleLabel)
@@ -73,12 +80,5 @@ final class ProfileView: UIView {
             sellerLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 5),
             minimumOSLabel.bottomAnchor.constraint(equalTo: profileImageView.bottomAnchor, constant: -10)
         ])
-        
-        profileImageView.image = UIImage(systemName: "square")
-        profileImageView.backgroundColor = .systemYellow
-        
-        titleLabel.text = "카카오톡"
-        sellerLabel.text = "Kakao Corp."
-        minimumOSLabel.text = "최소 iOS 버전이 9.0 이상이여야 합니다."
     }
 }

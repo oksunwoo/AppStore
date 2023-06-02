@@ -199,16 +199,25 @@ extension DetailViewController {
     private func configureUIContents(with ouputPublisher: AnyPublisher<AppInformation, Never>) {
         ouputPublisher
             .receive(on: DispatchQueue.main)
-            .sink { appInformation in
-                self.appInformation = appInformation
+            .sink { appInfo in
+                self.appInformation = appInfo
+                self.setUpUI(with: appInfo)
             }
             .store(in: &cancellable)
+    }
+    
+    private func setUpUI(with appInformation: AppInformation) {
+        profileView.apply(with: appInformation)
     }
 }
 
 extension DetailViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        guard let count = appInformation?.screenshotURLs.count else {
+            return 0
+        }
+        
+        return count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
