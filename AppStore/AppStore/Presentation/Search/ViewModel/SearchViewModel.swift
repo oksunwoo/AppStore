@@ -53,6 +53,7 @@ class SearchViewModel: ViewModelProtocol {
                                 formattedPrice: appInformationDTO.formattedPrice,
                                 averageUserRating: appInformationDTO.averageUserRating,
                                 userRatingCount: appInformationDTO.userRatingCount,
+                                minimumOsVersion: appInformationDTO.minimumOSVersion,
                                 version: appInformationDTO.version
                             )
                         }

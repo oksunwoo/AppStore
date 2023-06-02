@@ -22,5 +22,6 @@ struct AppInformation {
     let formattedPrice: String
     let averageUserRating: Double
     let userRatingCount: Int
+    let minimumOsVersion: String
     let version: String
 }
