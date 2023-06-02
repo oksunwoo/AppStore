@@ -6,14 +6,15 @@
 //
 
 import Foundation
+import Combine
 
-class DetailViewModel: ViewModelProtocol {
+final class DetailViewModel: ViewModelProtocol {
     struct Input {
-        
+        let appear: AnyPublisher<Void, Never>
     }
     
     struct Output {
-        
+        let appInformation: AnyPublisher<AppInformation, Never>
     }
     
     private weak var coordinator: DetailCoordinator!
@@ -25,7 +26,14 @@ class DetailViewModel: ViewModelProtocol {
     }
     
     func transform(input: Input) -> Output {
-        Output()
+        let appInformation = configureOperator(input: input.appear)
+        return Output(appInformation: appInformation)
     }
     
+    private func configureOperator(input publisher: AnyPublisher<Void, Never>) -> AnyPublisher<AppInformation, Never>{
+        return publisher.map({
+            self.appInformation
+        })
+        .eraseToAnyPublisher()
+    }
 }
