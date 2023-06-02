@@ -91,7 +91,6 @@ final class ListTableViewCell: UITableViewCell {
     }
     
     func apply(with appItem: AppInformation) {
-        configureUI()
         setInformation(with: appItem)
     }
     
