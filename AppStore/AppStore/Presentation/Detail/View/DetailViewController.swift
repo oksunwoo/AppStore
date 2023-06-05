@@ -97,6 +97,7 @@ final class DetailViewController: UIViewController {
     
     private var viewModel : DetailViewModel!
     private var appInformation: AppInformation?
+    private var previewURL: [String] = []
     
     private let appear = PassthroughSubject<Void, Never>()
     private var cancellable = Set<AnyCancellable>()
@@ -209,6 +210,8 @@ extension DetailViewController {
     private func setUpUI(with appInformation: AppInformation) {
         profileView.apply(with: appInformation)
         summaryScrollView.apply(with: appInformation)
+        previewURL = appInformation.screenshotURLs
+        previewCollectionView.reloadData()
     }
 }
 
@@ -226,7 +229,7 @@ extension DetailViewController: UICollectionViewDataSource {
             return UICollectionViewCell()
         }
         
-        cell.configureUI()
+        cell.setInformation(with: previewURL[indexPath.row])
         
         return cell
     }

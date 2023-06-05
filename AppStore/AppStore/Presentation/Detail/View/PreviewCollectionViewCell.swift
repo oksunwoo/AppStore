@@ -25,7 +25,17 @@ final class PreviewCollectionViewCell: UICollectionViewCell {
         configureUI()
     }
     
-    func configureUI() {
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        previewImageView.image = nil
+    }
+    
+    func setInformation(with previewURL: String) {
+        configureUI()
+        previewImageView.load(with: previewURL)
+    }
+    
+    private func configureUI() {
         addSubview(previewImageView)
         
         NSLayoutConstraint.activate([
@@ -34,8 +44,6 @@ final class PreviewCollectionViewCell: UICollectionViewCell {
             previewImageView.bottomAnchor.constraint(equalTo: bottomAnchor),
             previewImageView.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
-        
-        previewImageView.load(with: "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource126/v4/62/01/0d/62010d85-cea4-5290-35c9-11a5704b59db/ee4d2e80-a9f8-436f-b510-478cca29e7f2_ios_5.5_01.png/392x696bb.png")
     }
 }
 
