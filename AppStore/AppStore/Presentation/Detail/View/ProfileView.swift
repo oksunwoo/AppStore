@@ -56,7 +56,7 @@ final class ProfileView: UIView {
         profileImageView.load(with: appInformation.artworkURL100)
         titleLabel.text = appInformation.trackName
         sellerLabel.text = appInformation.sellerName
-        minimumOSLabel.text = "최소 iOS 버전이 9.0 이상이여야 합니다."
+        minimumOSLabel.text = "최소 iOS 버전이 \(appInformation.minimumOsVersion) 이상이여야 합니다."
     }
     
     private func configureUI() {
