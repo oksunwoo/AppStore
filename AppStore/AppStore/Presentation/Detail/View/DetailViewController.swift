@@ -212,6 +212,8 @@ extension DetailViewController {
         summaryScrollView.apply(with: appInformation)
         previewURL = appInformation.screenshotURLs
         previewCollectionView.reloadData()
+        newReleaseView.apply(with: appInformation.releaseNotes)
+        descriptionTextView.apply(with: appInformation.description)
     }
 }
 
