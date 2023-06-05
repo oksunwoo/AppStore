@@ -200,9 +200,9 @@ extension DetailViewController {
     private func configureUIContents(with ouputPublisher: AnyPublisher<AppInformation, Never>) {
         ouputPublisher
             .receive(on: DispatchQueue.main)
-            .sink { appInfo in
-                self.appInformation = appInfo
-                self.setUpUI(with: appInfo)
+            .sink { information in
+                self.appInformation = information
+                self.setUpUI(with: information)
             }
             .store(in: &cancellable)
     }
