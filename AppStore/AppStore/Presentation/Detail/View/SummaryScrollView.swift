@@ -219,7 +219,29 @@ final class SummaryScrollView: UIScrollView {
         configureUI()
     }
     
-    func configureUI() {
+    func apply(with appInformation: AppInformation) {
+        ratingTitleLabel.text = "\(appInformation.userRatingCount.ratingCountFormatter)개의 평가"
+        ratingTextLabel.text = String(format: "%.1f", appInformation.averageUserRating)
+        starRatingStackView.makeStar(with: appInformation.averageUserRating)
+        
+        contentRatingTitleLabel.text = "연령"
+        contentRatingTextLabel.text = appInformation.contentAdvisoryRating
+        contentRatingBottomTextLabel.text = "세"
+        
+        genreTitleLabel.text = "차트"
+        genreImageView.image = UIImage(systemName: setImageOf(appInformation.primaryGenreName))
+        genreBottomTextLabel.text = appInformation.primaryGenreName
+        
+        sellerTitleLabel.text = "개발자"
+        sellerImageView.image = UIImage(systemName: "person.crop.square")
+        sellerBottomTextLabel.text = appInformation.artistName
+        
+        languageTitleLabel.text = "언어"
+        languageTextLabel.text = appInformation.languageCodesISO2A.first
+        languageBottomTextLabel.text = "+ \(appInformation.languageCodesISO2A.count)개의 언어"
+    }
+    
+    private func configureUI() {
         translatesAutoresizingMaskIntoConstraints = false
         showsVerticalScrollIndicator = false
         showsHorizontalScrollIndicator = false
@@ -298,25 +320,103 @@ final class SummaryScrollView: UIScrollView {
             languageDivider.heightAnchor.constraint(equalTo: HStack.heightAnchor, multiplier: 0.5),
             languageDivider.centerYAnchor.constraint(equalTo: HStack.centerYAnchor),
         ])
+    }
+}
+
+extension SummaryScrollView {
+    private func setImageOf(_ genre: String) -> String {
+        guard let name = Genre(rawValue: genre)?.name else {
+            return "apps.iphone"
+        }
         
-        ratingTitleLabel.text = "13만개의 평가"
-        ratingTextLabel.text = "3.0"
-        starRatingStackView.makeStar(with: 4.0)
+        return name
+    }
+}
+
+extension SummaryScrollView {
+    enum Genre: String {
+        case finance = "Finance"
+        case travel = "Travel"
+        case socialNetworking = "Social Networking"
+        case entertainment = "Entertainment"
+        case navigation = "Navigation"
+        case reference = "Reference"
+        case utilities = "Utilities"
+        case book = "Book"
+        case business = "Business"
+        case developerTools = "Developer Tools"
+        case education = "Education"
+        case food = "Food & Drink"
+        case game = "Games"
+        case design = "Graphics & Design"
+        case health = "Health & Fitness"
+        case lifeStyle = "Lifestyle"
+        case kids = "Kids"
+        case magazines = "Magazines & Newspapers"
+        case medical = "Medical"
+        case music = "Music"
+        case news = "News"
+        case photo = "Photo & Video"
+        case productivity = "Productivity"
+        case shopping = "Shopping"
+        case sport = "Sports"
+        case weather = "Weather"
         
-        contentRatingTitleLabel.text = "연령"
-        contentRatingTextLabel.text = "4+"
-        contentRatingBottomTextLabel.text = "세"
-        
-        genreTitleLabel.text = "차트"
-        genreImageView.image = UIImage(systemName: "message.circle.fill")
-        genreBottomTextLabel.text = "소셜 네트워킹"
-        
-        sellerTitleLabel.text = "개발자"
-        sellerImageView.image = UIImage(systemName: "person.crop.square")
-        sellerBottomTextLabel.text = "Kakao Corp."
-        
-        languageTitleLabel.text = "언어"
-        languageTextLabel.text = "KO"
-        languageBottomTextLabel.text = "+ 14개 언어"
+        var name: String {
+            switch self {
+            case .finance:
+                return "dollarsign.circle"
+            case .travel:
+                return "airplane.departure"
+            case .socialNetworking:
+                return "message.circle.fill"
+            case .entertainment:
+                return "figure.cooldown"
+            case .navigation:
+                return "car.rear.road.lane"
+            case .reference:
+                return "magnifyingglass.circle.fill"
+            case .utilities:
+                return "folder.circle.fill"
+            case .book:
+                return "book.circle.fill"
+            case .business:
+                return "calendar.circle.fill"
+            case .developerTools:
+                return "macpro.gen3.fill"
+            case .education:
+                return "graduationcap.circle.fill"
+            case .food:
+                return "fork.knife.circle.fill"
+            case .game:
+                return "gamecontroller.fill"
+            case .design:
+                return "photo.artframe"
+            case .health:
+                return "figure.strengthtraining.traditional"
+            case .lifeStyle:
+                return "house.circle.fill"
+            case .kids:
+                return "figure.and.child.holdinghands"
+            case .magazines:
+                return "magazine"
+            case .medical:
+                return "stethoscope.circle"
+            case .music:
+                return "music.note.list"
+            case .news:
+                return "newspaper"
+            case .photo:
+                return "camera.circle.fill"
+            case .productivity:
+                return "icloud.and.arrow.down"
+            case .shopping:
+                return "cart"
+            case .sport:
+                return "sportscourt.circle.fill"
+            case .weather:
+                return "cloud.sun.fill"
+            }
+        }
     }
 }

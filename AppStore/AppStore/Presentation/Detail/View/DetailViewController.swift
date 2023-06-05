@@ -208,6 +208,7 @@ extension DetailViewController {
     
     private func setUpUI(with appInformation: AppInformation) {
         profileView.apply(with: appInformation)
+        summaryScrollView.apply(with: appInformation)
     }
 }
 
