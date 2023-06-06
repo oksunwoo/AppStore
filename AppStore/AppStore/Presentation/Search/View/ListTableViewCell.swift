@@ -70,7 +70,6 @@ final class ListTableViewCell: UITableViewCell {
     
     convenience init() {
         self.init(style: .default, reuseIdentifier: Text.reuseIdentifier)
-        configureUI()
     }
     
     override func prepareForReuse() {

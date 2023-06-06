@@ -98,6 +98,7 @@ final class DetailViewController: UIViewController {
     private var viewModel : DetailViewModel!
     private var appInformation: AppInformation?
     private var previewURL: [String] = []
+    private var cellContent: [String] = []
     
     private let appear = PassthroughSubject<Void, Never>()
     private var cancellable = Set<AnyCancellable>()
@@ -134,8 +135,6 @@ final class DetailViewController: UIViewController {
     }
     
     private func configureNavigation() {
-        let image = UIImage(systemName: "square")
-        navigationItem.titleView = UIImageView(image: image)
         navigationItem.largeTitleDisplayMode = .never
     }
     
@@ -214,6 +213,8 @@ extension DetailViewController {
         previewCollectionView.reloadData()
         newReleaseView.apply(with: appInformation.releaseNotes)
         descriptionTextView.apply(with: appInformation.description)
+        cellContent = [appInformation.artistName, appInformation.fileSizeBytes.fileSizeFormatter(), appInformation.primaryGenreName, appInformation.languageCodesISO2A.first ?? "확인 불가", appInformation.contentAdvisoryRating, appInformation.formattedPrice]
+        informationTableView.reloadData()
     }
 }
 
@@ -256,7 +257,7 @@ extension DetailViewController: UICollectionViewDelegateFlowLayout {
 
 extension DetailViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 7
+        return cellContent.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -264,14 +265,17 @@ extension DetailViewController: UITableViewDataSource {
             return UITableViewCell()
         }
         
-        cell.configureUI()
+        let title = Information.allCases[indexPath.row].title
+        let content = cellContent[indexPath.row]
+        
+        cell.setInformation(title: title, content: content)
         
         return cell
     }
 }
 
 extension DetailViewController {
-    enum Information {
+    enum Information: CaseIterable {
         case provider, fileSize, category, language, advisoryRating, price
         
         var title: String {

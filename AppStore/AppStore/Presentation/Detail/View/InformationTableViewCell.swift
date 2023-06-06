@@ -28,12 +28,21 @@ final class InformationTableViewCell: UITableViewCell {
         return label
     }()
     
-    convenience init() {
-        self.init(frame: .zero)
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier )
         configureUI()
     }
     
-    func configureUI() {
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func setInformation(title: String, content: String) {
+        titleLabel.text = title
+        contentLabel.text = content
+    }
+    
+    private func configureUI() {
         addSubview(titleLabel)
         addSubview(contentLabel)
         
@@ -44,9 +53,6 @@ final class InformationTableViewCell: UITableViewCell {
             contentLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15),
             contentLabel.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
-        
-        titleLabel.text = "제공자"
-        contentLabel.text = "Danggeun Market Inc."
     }
 }
 
