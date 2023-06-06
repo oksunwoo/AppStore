@@ -271,6 +271,29 @@ extension DetailViewController: UITableViewDataSource {
 }
 
 extension DetailViewController {
+    enum Information {
+        case provider, fileSize, category, language, advisoryRating, price
+        
+        var title: String {
+            switch self {
+            case .provider:
+                return "제공자"
+            case .fileSize:
+                return "크기"
+            case .category:
+                return "카테고리"
+            case .language:
+                return "언어"
+            case .advisoryRating:
+                return "연령등급"
+            case .price:
+                return "가격"
+            }
+        }
+    }
+}
+
+extension DetailViewController {
     enum Text {
         static let newReleaseTitle = "새로운 기능"
         static let previewTitle = "미리보기"
