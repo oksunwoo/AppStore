@@ -109,6 +109,10 @@ final class DetailViewController: UIViewController {
         self.viewModel = viewModel
     }
     
+    deinit {
+        viewModel.endDetailPage()
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         

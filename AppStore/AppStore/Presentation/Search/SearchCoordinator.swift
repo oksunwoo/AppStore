@@ -30,7 +30,7 @@ final class SearchCoordinator: Coordinator {
     }
     
     func showDetailPage(with appInformation: AppInformation) {
-        let detailCoordinator = DetailCoordinator(navigationController: navigationController)
+        let detailCoordinator = DetailCoordinator(navigationController: navigationController, parentCoordinator: self)
         childCoordinators.append(detailCoordinator)
         detailCoordinator.start(with: appInformation)
     }

@@ -36,4 +36,8 @@ final class DetailViewModel: ViewModelProtocol {
         })
         .eraseToAnyPublisher()
     }
+    
+    func endDetailPage() {
+        coordinator.end()
+    }
 }

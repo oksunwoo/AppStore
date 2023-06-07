@@ -10,10 +10,12 @@ import UIKit
 final class DetailCoordinator: Coordinator {
     var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController
+    weak var parentCoordinator: Coordinator?
     var type: CoordinatorType = .detail
     
-    init(navigationController: UINavigationController) {
+    init(navigationController: UINavigationController, parentCoordinator: Coordinator) {
         self.navigationController = navigationController
+        self.parentCoordinator = parentCoordinator
     }
     
     func start(with appInformation: AppInformation) {
@@ -25,5 +27,9 @@ final class DetailCoordinator: Coordinator {
         let detailViewController = DetailViewController(viewModel: detailViewModel)
         
         navigationController.pushViewController(detailViewController, animated: true)
+    }
+    
+    func end() {
+        parentCoordinator?.removeChildCoordinator(self)
     }
 }
