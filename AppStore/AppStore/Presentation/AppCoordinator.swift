@@ -21,7 +21,7 @@ final class AppCoordinator: Coordinator {
     }
     
     private func showSearchPage() {
-        let searchCoordinator = SearchCoordinator(navigationController: navigationController)
+        let searchCoordinator = SearchCoordinator(navigationController: navigationController, parentCoordinator: self)
         childCoordinators.append(searchCoordinator)
         searchCoordinator.start()
     }

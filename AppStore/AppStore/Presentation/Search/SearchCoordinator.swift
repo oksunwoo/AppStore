@@ -10,10 +10,12 @@ import UIKit
 final class SearchCoordinator: Coordinator {
     var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController
+    weak var parentCoordinator: Coordinator?
     var type: CoordinatorType = .search
     
-    init(navigationController: UINavigationController) {
+    init(navigationController: UINavigationController, parentCoordinator: Coordinator) {
         self.navigationController = navigationController
+        self.parentCoordinator = parentCoordinator
     }
     
     func start() {
@@ -31,5 +33,9 @@ final class SearchCoordinator: Coordinator {
         let detailCoordinator = DetailCoordinator(navigationController: navigationController)
         childCoordinators.append(detailCoordinator)
         detailCoordinator.start(with: appInformation)
+    }
+    
+    func end() {
+        parentCoordinator?.removeChildCoordinator(self)
     }
 }

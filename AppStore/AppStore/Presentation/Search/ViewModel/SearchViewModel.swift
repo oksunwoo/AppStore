@@ -72,4 +72,8 @@ class SearchViewModel: ViewModelProtocol {
     func showDetailPage(with appInformation: AppInformation) {
         coordinator.showDetailPage(with: appInformation)
     }
+    
+    func endSearchPage() {
+        coordinator.end()
+    }
 }
