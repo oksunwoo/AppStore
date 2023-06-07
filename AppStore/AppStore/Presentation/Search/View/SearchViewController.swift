@@ -24,7 +24,7 @@ final class SearchViewController: UIViewController {
     private let listTableView: UITableView = {
        let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.separatorStyle = .singleLine
+        tableView.separatorStyle = .none
         
         return tableView
     }()
@@ -95,12 +95,12 @@ extension SearchViewController {
     private func configureUIContents(with outputPublisher: AnyPublisher<[AppInformation]?, Never>) {
         outputPublisher
             .receive(on: DispatchQueue.main)
-            .sink { appItem in
+            .sink { [weak self] appItem in
                 guard let informations = appItem else {
                     return
                 }
-                self.appsInformation = informations
-                self.listTableView.reloadData()
+                self?.appsInformation = informations
+                self?.listTableView.reloadData()
             }
             .store(in: &cancellable)
     }
@@ -125,7 +125,7 @@ extension SearchViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: Text.cellIdentifier, for: indexPath) as? ListTableViewCell else {
             return UITableViewCell()
         }
-        
+        cell.selectionStyle = .none
         cell.apply(with: appsInformation[indexPath.row])
         return cell
     }
@@ -135,6 +135,10 @@ extension SearchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         return CGFloat(100)
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewModel.showDetailPage(with: appsInformation[indexPath.row])
     }
 }
 

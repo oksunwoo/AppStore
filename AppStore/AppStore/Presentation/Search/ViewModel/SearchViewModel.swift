@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-class SearchViewModel: ViewModelPrototol {
+class SearchViewModel: ViewModelProtocol {
     struct Input {
         let searchButtonDidTap: AnyPublisher<String, Never>
     }
@@ -53,6 +53,7 @@ class SearchViewModel: ViewModelPrototol {
                                 formattedPrice: appInformationDTO.formattedPrice,
                                 averageUserRating: appInformationDTO.averageUserRating,
                                 userRatingCount: appInformationDTO.userRatingCount,
+                                minimumOsVersion: appInformationDTO.minimumOSVersion,
                                 version: appInformationDTO.version
                             )
                         }
@@ -66,5 +67,9 @@ class SearchViewModel: ViewModelPrototol {
     
     private func fetchData(with keyword: String) -> AnyPublisher<SearchResultDTO, NetworkError> {
         return ItunesAPI.SearchAPI(appName: keyword).fetchData()
+    }
+    
+    func showDetailPage(with appInformation: AppInformation) {
+        coordinator.showDetailPage(with: appInformation)
     }
 }
