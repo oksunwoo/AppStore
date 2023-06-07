@@ -24,7 +24,6 @@
 		537C2DA529F7E32B00942684 /* SearchResultDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 537C2DA429F7E32B00942684 /* SearchResultDTO.swift */; };
 		537C2DA729F7E39B00942684 /* AppInformationDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 537C2DA629F7E39B00942684 /* AppInformationDTO.swift */; };
 		537C2DA929F9255D00942684 /* APIProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 537C2DA829F9255D00942684 /* APIProtocol.swift */; };
-		537C2DAB29F963D600942684 /* APIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 537C2DAA29F963D600942684 /* APIResponse.swift */; };
 		537C2DAD29FAAB5700942684 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 537C2DAC29FAAB5700942684 /* NetworkError.swift */; };
 		537C2DAF29FAB3E400942684 /* SessionRequestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 537C2DAE29FAB3E400942684 /* SessionRequestable.swift */; };
 		53A2F93029ED6FD30018560C /* CoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A2F92F29ED6FD30018560C /* CoordinatorProtocol.swift */; };
@@ -80,7 +79,6 @@
 		537C2DA429F7E32B00942684 /* SearchResultDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultDTO.swift; sourceTree = "<group>"; };
 		537C2DA629F7E39B00942684 /* AppInformationDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInformationDTO.swift; sourceTree = "<group>"; };
 		537C2DA829F9255D00942684 /* APIProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIProtocol.swift; sourceTree = "<group>"; };
-		537C2DAA29F963D600942684 /* APIResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIResponse.swift; sourceTree = "<group>"; };
 		537C2DAC29FAAB5700942684 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		537C2DAE29FAB3E400942684 /* SessionRequestable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionRequestable.swift; sourceTree = "<group>"; };
 		53A2F92F29ED6FD30018560C /* CoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorProtocol.swift; sourceTree = "<group>"; };
@@ -241,7 +239,6 @@
 			children = (
 				537C2DA829F9255D00942684 /* APIProtocol.swift */,
 				537C2DAE29FAB3E400942684 /* SessionRequestable.swift */,
-				537C2DAA29F963D600942684 /* APIResponse.swift */,
 				537C2DAC29FAAB5700942684 /* NetworkError.swift */,
 				53B3D9BD29FD40EB00C51BDB /* ItunesAPI.swift */,
 				537C2DA329F7E30900942684 /* DTO */,
@@ -442,7 +439,6 @@
 				532312A72A13AA1500890F95 /* DetailViewModel.swift in Sources */,
 				53A2F93029ED6FD30018560C /* CoordinatorProtocol.swift in Sources */,
 				53B3D9BE29FD40EB00C51BDB /* ItunesAPI.swift in Sources */,
-				537C2DAB29F963D600942684 /* APIResponse.swift in Sources */,
 				53B3D9CA2A010C1000C51BDB /* StarRatingStackView.swift in Sources */,
 				53A2F94029F164560018560C /* SearchCoordinator.swift in Sources */,
 				53C96E562A26348A0017F758 /* InformationTableViewCell.swift in Sources */,

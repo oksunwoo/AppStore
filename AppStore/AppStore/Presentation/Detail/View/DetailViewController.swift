@@ -199,9 +199,9 @@ extension DetailViewController {
     private func configureUIContents(with ouputPublisher: AnyPublisher<AppInformation, Never>) {
         ouputPublisher
             .receive(on: DispatchQueue.main)
-            .sink { information in
-                self.appInformation = information
-                self.setUpUI(with: information)
+            .sink { [weak self] information in
+                self?.appInformation = information
+                self?.setUpUI(with: information)
             }
             .store(in: &cancellable)
     }
@@ -213,7 +213,7 @@ extension DetailViewController {
         previewCollectionView.reloadData()
         newReleaseView.apply(with: appInformation.releaseNotes)
         descriptionTextView.apply(with: appInformation.description)
-        cellContent = [appInformation.artistName, appInformation.fileSizeBytes.fileSizeFormatter(), appInformation.primaryGenreName, appInformation.languageCodesISO2A.first ?? "확인 불가", appInformation.contentAdvisoryRating, appInformation.formattedPrice]
+        cellContent = [appInformation.artistName, appInformation.fileSizeBytes.fileSizeFormatter(), appInformation.primaryGenreName, appInformation.languageCodesISO2A.first ?? Text.noInformation, appInformation.contentAdvisoryRating, appInformation.formattedPrice]
         informationTableView.reloadData()
     }
 }
@@ -302,6 +302,7 @@ extension DetailViewController {
         static let newReleaseTitle = "새로운 기능"
         static let previewTitle = "미리보기"
         static let informationTitle = "정보"
+        static let noInformation = "확인 불가"
         static let previewCellIdentifier = "PreviewCollectionViewCell"
         static let InformationCellIdentifier = "InformationTableViewCell"
     }
