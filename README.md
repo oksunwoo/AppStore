@@ -27,6 +27,10 @@
 
 ## 구동 화면 🖥
 
+<img src="https://github.com/oksunwoo/Turtle_Neck/assets/55880539/707970fb-fde7-4f12-b523-c7e4544ca3fb" width="30%" height="30%"/> <img src="https://github.com/oksunwoo/Turtle_Neck/assets/55880539/a92a8094-38b7-404b-b1c9-e0b79764c5f1" width="30%" height="30%"/>
+
+
+
 
 
 ## 구현 내용 ✏️
@@ -57,7 +61,7 @@ MockURLSession은 다음과 같은 이유로 작성했습니다.
 ### 1. UISearchController
 검색창에 터치를 하게 되면, 검색창이 상단으로 올라가는 애니메이션을 위해 UISearchController로 구현하였습니다.
 
-<img src = "https://hackmd.io/_uploads/BkeLgwyv3.png" width = "30%" height= "30%">    <img src = "https://hackmd.io/_uploads/ByeAxDywn.png" width = "30%" height= "30%">
+<img src = "https://github.com/oksunwoo/Turtle_Neck/assets/55880539/34981048-b96f-44d0-b91c-174412027e4c" width = "25%" height= "25%">    <img src = "https://github.com/oksunwoo/Turtle_Neck/assets/55880539/7798bb54-6989-4b9c-baf6-efd011ceb4d1" width = "25%" height= "25%">
 
 ### 2. ImageCache
 앱의 썸네일을 매번 서버로부터 요청받아 화면에 띄우는 것은 비효율적이라고 생각을 하여, NSCache를 이용하여 메모리 캐시를 도입했습니다. 메모리에 이미지가 존재한다면 이미지를 반환해주고, 존재하지 않는다면 서버에 요청해 이미지를 받아옵니다. 요청 시 이미지를 성공적으로 받아왔다면 캐시에 저장하여 다음번에 이미지를 사용하는 경우 캐시에서 이미지를 받아올 수 있도록 했습니다.
@@ -66,12 +70,25 @@ MockURLSession은 다음과 같은 이유로 작성했습니다.
 앱 검색 시 나타나는 별점을 StarImageView를 통해 구현했습니다. 평점 데이터를 받아 필요한 개수만큼의 별을 생성하며 StackView에 추가하였습니다. 소수부의 자리가 0.5를 넘는다면 별이 반개가 표시되며, 넘지않으면 빈 별이 표시되도록 구현했습니다.
 
 > Part 3 - 상세 화면 부분
-### 1. Coordinator deinit
+### 1. 다양한 뷰의 조합
+앱스토어의 상세화면을 다양한 뷰를 이용하여 ScrollView + StackView 안에 담아내었습니다. 
+
+순서대로 `CustomView - ScrollView - Label - TextView - Label - CollectionView - TextView - Label - TableView` 입니다.
+<img src = "https://github.com/oksunwoo/Turtle_Neck/assets/55880539/80d666cf-05ee-4b8f-b02a-a17b983de945" width = "25%" height= "25%"> <img src = "https://github.com/oksunwoo/Turtle_Neck/assets/55880539/e3ff25ff-2146-4d4a-9ca8-6a9764281ec1" width = "25%" height= "25%"> <img src = "https://github.com/oksunwoo/Turtle_Neck/assets/55880539/03383bb9-0dac-495a-b964-9bc37815a730" width = "25%" height= "25%">
+
+### 2. Coordinator deinit
 Detail화면을 5번 띄운 후의 모습입니다. DetailViewController가 메모리에서 해제되었음에도 불구하고, DetailCoordinator가 5개가 남아있는 모습입니다. DetailCoordinator의 할 일이 사라졌으므로, 메모리 누수를 방지하기 위해 viewController의 deinit시 같이 제거해주었습니다.
 
-(수정 전)
-<img src = "https://hackmd.io/_uploads/SkY5mmJP2.png" width = "50%" height= "30%"> 
+(수정 전) 
+
+<img src = "https://github.com/oksunwoo/Turtle_Neck/assets/55880539/2aa66a9d-93e5-401c-891f-84e94ac90b89" width = "30%" height= "30%"> 
+
+(수정 후) 
+
+<img src = "https://github.com/oksunwoo/Turtle_Neck/assets/55880539/be08fc4a-f2b1-42d2-a49e-1f32f5425090" width = "30%" height= "30%"> 
+
+### 3. 다크 모드/라이트 모드 지원
+<img src = "https://github.com/oksunwoo/Turtle_Neck/assets/55880539/967f2933-b2e0-432d-9c8c-0b1e65a805d7" width = "20%" height= "30%"> <img src = "https://github.com/oksunwoo/Turtle_Neck/assets/55880539/e71d886e-8227-4e37-812d-3294c24aa0b2" width = "20%" height= "30%"> <img src = "https://github.com/oksunwoo/Turtle_Neck/assets/55880539/cc3cdac6-4721-4deb-a5f8-9002c87c2c59" width = "20%" height= "30%"> <img src = "https://github.com/oksunwoo/Turtle_Neck/assets/55880539/91860868-59e1-415f-9607-57d80328d9197" width = "20%" height= "30%"> 
 
 
-(수정 후)
-<img src = "https://hackmd.io/_uploads/SJFHBm1Pn.png" width = "50%" height= "30%"> 
+
